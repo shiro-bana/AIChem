@@ -1,0 +1,463 @@
+{
+    "actions": [
+        {
+            "code": "door_open",
+            "id": 1897802271294464,
+            "name": "开门",
+            "noteCn": "",
+            "noteEn": "",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "door_open",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": null,
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "right,left,all",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "right",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "door_position",
+                    "paramName": "开门位置",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": "",
+                    "unitTypeName": "",
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "door_close",
+            "id": 1897802271294465,
+            "name": "关门",
+            "noteCn": "",
+            "noteEn": "",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "door_close",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": null,
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "right,left,all",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "right",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "door_position",
+                    "paramName": "关门位置",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": "",
+                    "unitTypeName": "",
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "set_balance",
+            "id": 1897802271294466,
+            "name": "进样",
+            "noteCn": "",
+            "noteEn": "",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "set_balance",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": null,
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "(0,200)",
+                    "constraintValueEn": "",
+                    "dataType": "float",
+                    "defaultValue": "",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "weight",
+                    "paramName": "进样质量（克）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": "",
+                    "unitTypeName": "",
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "force_online",
+            "id": 1897802271294467,
+            "name": "强制上线",
+            "noteCn": "强制上线",
+            "noteEn": "force online",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "online",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作类型",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "GET",
+                "url": "/online"
+            }
+        },
+        {
+            "code": "force_offline",
+            "id": 1897802271294468,
+            "name": "强制下线",
+            "noteCn": "强制下线",
+            "noteEn": "force offline",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "offline",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作类型",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "GET",
+                "url": "/offline"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "bottle_storage",
+            "maxHandleSize": 10
+        }
+    ],
+    "code": "solid_dispensing",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "allocate分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"allocateMode\":\"extend\",\"maxCount\":10,\"defaultCount\":1}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[{\"workstationCode\":\"starting_station_303\",\"workstationName\":\"303物料站\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put放置指令",
+            "code": "put-input",
+            "name": "放置进样瓶",
+            "noteCn": "",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take拿取指令",
+            "code": "take-input",
+            "name": "拿取进样瓶",
+            "noteCn": "",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "lock",
+            "actionName": "加锁",
+            "code": "lock",
+            "name": "固体进样锁",
+            "noteCn": "固体进样锁",
+            "noteEn": "lock",
+            "params": [
+                {
+                    "paramCode": "robotList",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "unlock",
+            "actionName": "解锁",
+            "code": "unlock",
+            "name": "固体进样释放锁",
+            "noteCn": "固体进样释放锁",
+            "noteEn": "unlock",
+            "params": [
+                {
+                    "paramCode": "robotList",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "slot_bottle_storage",
+            "typeId": 1390279958430720,
+            "typeName": "进样瓶槽位"
+        }
+    ],
+    "createTime": "2025-05-15 17:42:58",
+    "defaultVersion": true,
+    "definer": 0,
+    "equipManufacturerCode": "ACU",
+    "equipManufacturerName": "合肥蜀山恒兴实验仪器经营部",
+    "id": 1396669754016768,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "固体进样工作站",
+    "noteCn": "固体自动进样工作站用于自动向容器中加入固体样品。它能够准确地称量和加入一定量的固体样品，避免了人工操作可能带来的误差和污染。该工作站通常配备有高精度的称量装置和加样系统，可以按照预设的程序将固体样品准确地加入目标容器，可提高固体样品称量的效率和准确性。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "2.0"
+}

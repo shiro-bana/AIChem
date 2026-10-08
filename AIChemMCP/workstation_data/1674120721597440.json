@@ -1,0 +1,30 @@
+{
+    "actions": [],
+    "allocates": [],
+    "code": "spraying_workstation",
+    "commands": [],
+    "containerSettings": [],
+    "createTime": "2025-08-21 17:41:49",
+    "defaultVersion": true,
+    "definer": 1,
+    "equipManufacturerCode": null,
+    "equipManufacturerName": null,
+    "id": 1674120721597440,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "喷涂工作站",
+    "noteCn": "346电极实验室喷涂工作站",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-08-22 09:15:55",
+    "updatedActions": null,
+    "variables": [],
+    "version": "346-喷涂"
+}

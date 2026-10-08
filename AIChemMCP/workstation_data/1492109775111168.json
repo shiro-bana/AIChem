@@ -1,0 +1,618 @@
+{
+    "actions": [
+        {
+            "code": "start_pure",
+            "id": 1897802271327245,
+            "name": "开始纯化",
+            "noteCn": "开始纯化",
+            "noteEn": "start pure",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "startLab",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "开始纯化",
+                    "noteEn": null,
+                    "paramCode": "cmd",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "fileName",
+                            "noteEn": "fileName",
+                            "paramCode": "fileName",
+                            "paramName": "fileName",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": "",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "sampleLocation",
+                            "noteEn": "sampleLocation",
+                            "paramCode": "sampleLocation",
+                            "paramName": "sampleLocation",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "injVol",
+                            "noteEn": "injVol",
+                            "paramCode": "injVol",
+                            "paramName": "injVol",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": "",
+                            "constraintValue": "[{\"label\":\"config_1\",\"value\":\"config_1\"},{\"label\":\"config_2\",\"value\":\"config_2\"},{\"label\":\"config_3\",\"value\":\"config_3\"}]",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "inletFile",
+                            "noteEn": "inletFile",
+                            "paramCode": "inletFile",
+                            "paramName": "inletFile",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "msFile",
+                            "noteEn": "msFile",
+                            "paramCode": "msFile",
+                            "paramName": "msFile",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "fractionFile",
+                            "noteEn": "fractionFile",
+                            "paramCode": "fractionFile",
+                            "paramName": "fractionFile",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "wavelengthA",
+                            "noteEn": "wavelengthA",
+                            "paramCode": "wavelengthA",
+                            "paramName": "wavelengthA",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": "",
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "massA",
+                            "noteEn": "massA",
+                            "paramCode": "massA",
+                            "paramName": "massA",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": "",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "massB",
+                            "noteEn": "massB",
+                            "paramCode": "massB",
+                            "paramName": "massB",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": "",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "fraction1",
+                            "noteEn": "fraction1",
+                            "paramCode": "fraction1",
+                            "paramName": "fraction1",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "fraction2",
+                            "noteEn": "fraction2",
+                            "paramCode": "fraction2",
+                            "paramName": "fraction2",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "int",
+                            "defaultValue": "0",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "index",
+                            "noteEn": "index",
+                            "paramCode": "index",
+                            "paramName": "index",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": "id",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "id",
+                            "noteEn": "id",
+                            "paramCode": "id",
+                            "paramName": "id",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": "",
+                            "value": null
+                        }
+                    ],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "array",
+                    "defaultValue": null,
+                    "elementDataType": "object",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "参数",
+                    "noteEn": null,
+                    "paramCode": "others",
+                    "paramName": "参数",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/chemist/script/liquidChromatography"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "deep_hole_plate",
+            "maxHandleSize": 1
+        },
+        {
+            "containerTypeCode": "15ml_centrifuge_tube",
+            "maxHandleSize": 20
+        }
+    ],
+    "code": "toLC",
+    "commands": [
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "common",
+            "name": "通用指令",
+            "noteCn": "通用指令",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"maxCount\":1,\"containerTypeCode\":\"deep_hole_plate\",\"containerTypeName\":\"深孔板\",\"allocateMode\":\"extend\",\"defaultCount\":1},{\"minCount\":8,\"maxCount\":20,\"containerTypeCode\":\"15ml_centrifuge_tube\",\"containerTypeName\":\"15ml离心管\",\"allocateMode\":\"extend\",\"defaultCount\":8}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-deep-hole-plate",
+            "name": "放置深孔板",
+            "noteCn": "放置深孔板",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"deep_hole_plate\",\"containerTypeName\":\"深孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take_all",
+            "actionName": "take_all指令",
+            "code": "take-all-15ml-c-tube",
+            "name": "拿取所有15ml离心管",
+            "noteCn": "拿取所有15ml离心管",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"15ml_centrifuge_tube\",\"containerTypeName\":\"15ml离心管\",\"slotTypeCode\":\"15ml_centrifuge_tube_slot\"}]"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"15ml_centrifuge_tube_slot\",\"slotTypeName\":\"15ml离心管槽位\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "deep_hole_plate_slot",
+            "typeId": 1514900158448640,
+            "typeName": "深孔板槽位"
+        },
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [
+                        {
+                            "allCount": 20,
+                            "children": [
+                                {
+                                    "allCount": 20,
+                                    "children": [],
+                                    "containerType": "container",
+                                    "typeCode": "15ml_centrifuge_tube",
+                                    "typeId": 1515377377051648,
+                                    "typeName": "15ml离心管"
+                                }
+                            ],
+                            "containerType": "slot",
+                            "typeCode": "15ml_centrifuge_tube_slot",
+                            "typeId": 1515374508442624,
+                            "typeName": "15ml离心管槽位"
+                        }
+                    ],
+                    "containerType": "container",
+                    "typeCode": "rack",
+                    "typeId": 883795617580032,
+                    "typeName": "样品架"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        }
+    ],
+    "createTime": "2025-06-18 10:46:16",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "ADR",
+    "equipManufacturerName": "日本岛津",
+    "id": 1492109775111168,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "色谱工作站",
+    "noteCn": "制备型液相色谱仪主要用于从复杂混合物中分离和制备大量的目标化合物。它具有较大的分离柱和较高的样品负载能力。在天然产物研究中，可从植物提取物等复杂样品中分离出具有生物活性的化合物，为药物研发提供足够量的纯品进行进一步的研究和开发。通过优化色谱条件，可以实现高纯度和高产量的目标化合物制备，满足科研和生产对大量纯化合物的需求。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "制备型液相色谱仪工作站"
+}

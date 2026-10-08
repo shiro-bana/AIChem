@@ -1,0 +1,446 @@
+{
+    "actions": [
+        {
+            "code": "test",
+            "id": 1897802271753246,
+            "name": "code",
+            "noteCn": null,
+            "noteEn": null,
+            "params": null,
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "",
+                "url": ""
+            }
+        },
+        {
+            "code": "automaticOperation",
+            "id": 1897802271753247,
+            "name": "自动启动运行   判断是否允许机器人装样",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "methodExecute",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "chainName",
+                    "paramName": "chainName",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "boolean",
+                    "defaultValue": "true",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "ifAsynchronous",
+                    "paramName": "ifAsynchronous",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "W080848979E75D",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "sn",
+                    "paramName": "sn",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "automaticOperation",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "method",
+                    "paramName": "method",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "1",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "deviceNumber",
+                    "paramName": "deviceNumber",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/api/lite-flow/liteflow-chain/executionMethod"
+            }
+        },
+        {
+            "code": "sampleInstallationCompleted",
+            "id": 1897802271753248,
+            "name": "装样完成信号写入  反复判断运行状态异常  直到自动运行完成状态完成",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "methodExecute",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "chainName",
+                    "paramName": "chainName",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "boolean",
+                    "defaultValue": "true",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "ifAsynchronous",
+                    "paramName": "ifAsynchronous",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "W080848979E75D",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "sn",
+                    "paramName": "sn",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "sampleInstallationCompleted",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "method",
+                    "paramName": "method",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "1",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "deviceNumber",
+                    "paramName": "deviceNumber",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/api/lite-flow/liteflow-chain/executionMethod"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "deal_tube_crucible",
+            "maxHandleSize": 1
+        }
+    ],
+    "code": "TubeFurnace",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "分配容器",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"maxCount\":1,\"containerTypeCode\":\"deal_tube_crucible\",\"containerTypeName\":\"处理管式炉坩埚\",\"allocateMode\":\"extend\",\"defaultCount\":1}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[{\"workstationCode\":\"starting_station_chuli\",\"workstationName\":\"管式炉处理物料站\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take_all",
+            "actionName": "take_all指令",
+            "code": "take",
+            "name": "拿取容器",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"deal_tube_crucible\",\"containerTypeName\":\"处理管式炉坩埚\",\"slotTypeCode\":\"deal_tube_crucible_slot\"}]"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"deal_tube_crucible_slot\",\"slotTypeName\":\"处理管式炉坩埚槽位\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hik_robot_11335\",\"robotName\":\"海康_11335\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{\"workstationCode\":\"starting_station_chuli\",\"workstationName\":\"管式炉处理物料站\"}"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"\",\"containerTypeName\":\"\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put_all",
+            "actionName": "put_all指令",
+            "code": "put",
+            "name": "分配容器",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"deal_tube_crucible\",\"containerTypeName\":\"处理管式炉坩埚\",\"slotTypeCode\":\"deal_tube_crucible_slot\"}]"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hik_robot_11335\",\"robotName\":\"海康_11335\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "deal_tube_crucible_slot",
+            "typeId": 1617383556809728,
+            "typeName": "处理管式炉坩埚槽位"
+        }
+    ],
+    "createTime": "2025-07-01 16:04:03",
+    "defaultVersion": true,
+    "definer": 0,
+    "equipManufacturerCode": "AAS",
+    "equipManufacturerName": "合肥科晶材料技术有限公司",
+    "id": 1529539568370688,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "管式炉处理工作站",
+    "noteCn": "自动化处理管式炉是一种具有自动化控制功能的高温热处理设备。它采用管状炉膛结构，通常用于对样品进行高温烧结、退火、焙烧等热处理工艺。通过先进的自动化控制系统，可以精确控制炉内的温度、升温速率、保温时间和降温速率等参数。样品放置在炉管内，可在不同气氛（如空气、氮气、氢气等）下进行处理。广泛应用于材料科学、陶瓷制造、粉末冶金等领域，用于制备和处理各种高性能材料，如陶瓷材料、金属基复合材料等，提高材料的性能和质量。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": true,
+        "type": "any",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "t1"
+}

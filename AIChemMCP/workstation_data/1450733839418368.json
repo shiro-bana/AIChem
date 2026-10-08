@@ -1,0 +1,752 @@
+{
+    "actions": [
+        {
+            "code": "sleep_time",
+            "id": 1897802271392772,
+            "name": "容器静置时间",
+            "noteCn": "容器静置时间",
+            "noteEn": "sleep time",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "sleep_time",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "静置时间",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "86400",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "静置时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "file",
+                    "defaultValue": "resultCode",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "OUTPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "resultCode",
+                    "paramName": "resultCode",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "door_open",
+            "id": 1897802271392773,
+            "name": "开门",
+            "noteCn": "开门",
+            "noteEn": "open door",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "sleep_time",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "静置时间",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "86400",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "静置时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": "",
+                    "childParams": [
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": "1",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "a",
+                            "paramName": "a",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "int",
+                            "defaultValue": "b",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "b",
+                            "paramName": "b",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": "",
+                            "unitTypeName": null,
+                            "value": null
+                        }
+                    ],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "array",
+                    "defaultValue": "",
+                    "elementDataType": "string",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "aa",
+                    "paramName": null,
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": "",
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "door_close",
+            "id": 1897802271392774,
+            "name": "关门",
+            "noteCn": "关门",
+            "noteEn": "close door",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "sleep_time",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "静置时间",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "86400",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "静置时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "interlayer_close",
+            "id": 1897802271392775,
+            "name": "关闭夹层",
+            "noteCn": "关闭夹层",
+            "noteEn": "close interlayer",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "sleep_time",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "静置时间",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "86400",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "静置时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "interlayer_open",
+            "id": 1897802271392776,
+            "name": "开启夹层",
+            "noteCn": "开启夹层",
+            "noteEn": "open interlayer",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "sleep_time",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "静置时间",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "86400",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "静置时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "test",
+            "id": 1897802271392777,
+            "name": "测试参数",
+            "noteCn": "测试",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "[-100,100]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "int类型",
+                    "noteEn": null,
+                    "paramCode": "int",
+                    "paramName": "int类型",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "[-100,100]",
+                    "constraintValueEn": "",
+                    "dataType": "float",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "float类型",
+                    "noteEn": null,
+                    "paramCode": "float",
+                    "paramName": "float类型",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "50ml_centrifuge_tube",
+            "maxHandleSize": 800
+        }
+    ],
+    "code": "elec_chem_storage_workstation",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "allocate分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": "allocation tube",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":8,\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"allocateMode\":\"extend\",\"maxCount\":800,\"defaultCount\":8}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-50ml-ce-tube",
+            "name": "拿取50ml离心管",
+            "noteCn": "拿取50ml离心管",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-50ml-ce-tube",
+            "name": "放置50ml离心管",
+            "noteCn": "放置50ml离心管",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-50ml-ce-tube-to-robot",
+            "name": "放置50ml离心管到机器人身上",
+            "noteCn": "放置50ml离心管到机器人身上",
+            "noteEn": "",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_001\",\"robotName\":\"高新多联动机器人1号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-50ml-ce-tube-to-robot",
+            "name": "拿取50ml离心管到机器人身上",
+            "noteCn": "拿取50ml离心管到机器人身上",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_001\",\"robotName\":\"高新多联动机器人1号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 100,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        }
+    ],
+    "createTime": "2025-06-03 20:01:23",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "AFH",
+    "equipManufacturerName": "其他",
+    "id": 1450733839418368,
+    "ignoreMaterial": true,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "置物工作站",
+    "noteCn": "样品静置工作站为样品提供一个稳定、安静的环境，用于样品的静置和平衡。在一些实验中，样品在处理后需要一定的时间进行静置，以达到稳定的状态或使某些反应充分进行。该工作站可以精确控制环境的温度、湿度等条件，确保样品在静置过程中不受外界干扰。例如在一些化学分析实验中，样品在混合或反应后需要静置一段时间以达到均匀的状态，样品静置工作站能够提供适宜的条件，保证实验结果的准确性。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": true,
+        "type": "image",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [
+        {
+            "code": "count",
+            "dataType": "int",
+            "defaultValue": "1999",
+            "name": "测试变量",
+            "noteCn": "测试变量",
+            "noteEn": "test value"
+        }
+    ],
+    "version": "1.1"
+}

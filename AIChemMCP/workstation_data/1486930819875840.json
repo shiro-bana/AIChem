@@ -1,0 +1,227 @@
+{
+    "actions": [
+        {
+            "code": "mixing_time",
+            "id": 1897802271622186,
+            "name": "磁力搅拌",
+            "noteCn": "磁力搅拌",
+            "noteEn": "mixing time",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "10",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "搅拌时间（分）",
+                    "noteEn": null,
+                    "paramCode": "mixing_time",
+                    "paramName": "搅拌时间（分）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "mixing",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "操作指令",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作命令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "bottle_storage",
+            "maxHandleSize": 10
+        }
+    ],
+    "code": "magnetic_stirring",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "allocate分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":0,\"maxCount\":10,\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"allocateMode\":\"extend\",\"defaultCount\":5}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take拿取指令",
+            "code": "take-input",
+            "name": "拿瓶",
+            "noteCn": "拿取所有进样瓶",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put放置指令",
+            "code": "put-input",
+            "name": "放瓶",
+            "noteCn": "放置所有进样瓶",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "common",
+            "name": "通用指令",
+            "noteCn": "通用指令",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"schedule_robot_1\",\"robotName\":\"调度机器人\"}]"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        }
+    ],
+    "createTime": "2025-06-16 14:52:07",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "AAC",
+    "equipManufacturerName": "安徽优昇生物科技有限公司",
+    "id": 1486930819875840,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "磁力搅拌工作站",
+    "noteCn": "磁力搅拌工作站通过旋转的磁盘产生的离心力和剪切力，对放置在磁盘上的容器内的液体进行搅拌。它可以实现快速、高效的搅拌效果，使溶液充分混合。该工作站通常具有可调节的搅拌速度和时间设置，能够满足不同实验的需求。在化学合成、材料制备等实验中，可用于加速化学反应、促进物质的溶解和混合等，提高实验效率和产品质量。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "303-25通道磁力搅拌控制器"
+}

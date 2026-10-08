@@ -1,0 +1,759 @@
+{
+    "actions": [
+        {
+            "code": "door_open",
+            "id": 1897802271687721,
+            "name": "开门",
+            "noteCn": "开门",
+            "noteEn": "open door",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "door_open",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "开门",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "开门指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "[20, 60]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "20",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "等待开门完成的时间",
+                    "noteEn": null,
+                    "paramCode": "wait_time",
+                    "paramName": "等待开门完成时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "door_close",
+            "id": 1897802271687722,
+            "name": "关门",
+            "noteCn": "关门",
+            "noteEn": "close door",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "door_close",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "关门",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "关门指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "[20, 60]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "20",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "等待关门完成时间",
+                    "noteEn": null,
+                    "paramCode": "wait_time",
+                    "paramName": "等待关门完成时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "interlayer_close",
+            "id": 1897802271687723,
+            "name": "关闭夹层",
+            "noteCn": "关夹层",
+            "noteEn": "close interlayer",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "interlayer_close",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "关闭夹层",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "关闭夹层指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "[20, 60]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "20",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "等待夹层完成关闭时间",
+                    "noteEn": null,
+                    "paramCode": "wait_time",
+                    "paramName": "等待夹层完成关闭时间（s）",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"第一层\",\"value\":0},{\"label\":\"第二层\",\"value\":1},{\"label\":\"第三层\",\"value\":2},{\"label\":\"第四层\",\"value\":3}]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "position",
+                    "paramName": "夹层位置",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": "",
+                    "unitTypeName": "",
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "interlayer_open",
+            "id": 1897802271687724,
+            "name": "打开夹层",
+            "noteCn": "打开夹层",
+            "noteEn": "open interlayer",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "interlayer_open",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "打开夹层",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "打开夹层指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "[20, 60]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "20",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "等待夹层完成开启时间",
+                    "noteEn": null,
+                    "paramCode": "wait_time",
+                    "paramName": "等待夹层完成开启时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"第一层\",\"value\":0},{\"label\":\"第二层\",\"value\":1},{\"label\":\"第三层\",\"value\":2},{\"label\":\"第四层\",\"value\":3}]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "",
+                    "noteEn": null,
+                    "paramCode": "position",
+                    "paramName": "夹层层级",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "force_online",
+            "id": 1897802271687725,
+            "name": "强制上线",
+            "noteCn": "强制上线",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "online",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "opertation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "GET",
+                "url": "/online"
+            }
+        },
+        {
+            "code": "add_new_material",
+            "id": 1897802271687726,
+            "name": "上新母液",
+            "noteCn": "更换母液",
+            "noteEn": "add new material",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "add_new_material",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "上新母液",
+                    "noteEn": "add new material",
+                    "paramCode": "operation",
+                    "paramName": "上新母液",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "chem303LabMaterialTemplate",
+                    "bindDataTypeProperty": "",
+                    "childParams": [
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "int",
+                            "defaultValue": "",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "母液主键",
+                            "noteEn": null,
+                            "paramCode": "id",
+                            "paramName": "主键",
+                            "property": "id",
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "母液名称",
+                            "noteEn": "",
+                            "paramCode": "name",
+                            "paramName": "母液名称",
+                            "property": "modelName",
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": "ENUM",
+                            "constraintValue": "[{\"label\":\"1号槽位\",\"value\":1},{\"label\":\"2号槽位\",\"value\":2},{\"label\":\"3号槽位\",\"value\":3},{\"label\":\"4号槽位\",\"value\":4},{\"label\":\"5号槽位\",\"value\":5},{\"label\":\"6号槽位\",\"value\":6}]",
+                            "constraintValueEn": "",
+                            "dataType": "int",
+                            "defaultValue": "",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": "放置槽位",
+                            "noteEn": null,
+                            "paramCode": "slot",
+                            "paramName": "放置槽位",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": "",
+                            "value": null
+                        }
+                    ],
+                    "constraintType": "",
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "array",
+                    "defaultValue": "",
+                    "elementDataType": "object",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "",
+                    "noteEn": null,
+                    "paramCode": "materials",
+                    "paramName": "母液类型",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "update_material",
+            "id": 1897802271687727,
+            "name": "更新母液",
+            "noteCn": "更新母液",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "update",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "操作",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "250ml_glass_bottle",
+            "maxHandleSize": 28
+        }
+    ],
+    "code": "starting_station",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "allocate分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": "",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":1,\"maxCount\":28,\"containerTypeCode\":\"250ml_glass_bottle\",\"containerTypeName\":\"250ml玻璃瓶\",\"allocateMode\":\"extend\",\"defaultCount\":28}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[{\"workstationCode\":\"material_station\",\"workstationName\":\"储物柜\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-250ml-glass-bottle",
+            "name": "拿取250ml玻璃瓶",
+            "noteCn": "拿取250ml玻璃瓶",
+            "noteEn": "take 250ml glass bottle",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"250ml_glass_bottle\",\"containerTypeName\":\"250ml玻璃瓶\",\"slotTypeCode\":\"\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hsr_303_lab_material\",\"robotName\":\"华数_303实验室机器人\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-250ml-glass-bottle",
+            "name": "放置250ml玻璃瓶",
+            "noteCn": "放置250ml玻璃瓶",
+            "noteEn": "put 250ml glass bottle",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"250ml_glass_bottle\",\"containerTypeName\":\"250ml玻璃瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hsr_303_lab_material\",\"robotName\":\"华数_303实验室机器人\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "common",
+            "name": "通用指令",
+            "noteCn": "通用指令",
+            "noteEn": "common",
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hsr_303_lab_material\",\"robotName\":\"华数_303实验室机器人\"}]"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [
+                        {
+                            "allCount": 28,
+                            "children": [
+                                {
+                                    "allCount": 28,
+                                    "children": [],
+                                    "containerType": "container",
+                                    "typeCode": "250ml_glass_bottle",
+                                    "typeId": 1650691799155712,
+                                    "typeName": "250ml玻璃瓶"
+                                }
+                            ],
+                            "containerType": "slot",
+                            "typeCode": "250ml_glass_bottle_slot",
+                            "typeId": 1650687900681216,
+                            "typeName": "250ml玻璃瓶槽位"
+                        }
+                    ],
+                    "containerType": "container",
+                    "typeCode": "rack",
+                    "typeId": 883795617580032,
+                    "typeName": "样品架"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        }
+    ],
+    "createTime": "2025-06-10 13:38:58",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "ACW",
+    "equipManufacturerName": "合肥市蜀山区亚源精密仪器经营部",
+    "id": 1469800075756544,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "物料站",
+    "noteCn": "实验室试剂储存柜主要用于安全、规范地储存各种化学试剂。它通常具有良好的通风、防火、防爆等功能，以确保试剂的储存安全。根据试剂的性质，如易燃、易爆、有毒、腐蚀性等，储存柜会进行分类存储，避免不同性质的试剂相互反应。同时，储存柜还配备有合理的标识和管理系统，方便试剂的查找和取用，有助于提高实验室的管理水平和安全性，保障实验工作的顺利进行。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [
+        {
+            "code": "loop_count",
+            "dataType": "int",
+            "defaultValue": "1",
+            "name": "循环次数",
+            "noteCn": "循环次数",
+            "noteEn": null
+        }
+    ],
+    "version": "储物柜"
+}

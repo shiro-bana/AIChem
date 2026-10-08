@@ -1,0 +1,757 @@
+{
+    "actions": [
+        {
+            "code": "start_concussion",
+            "id": 1897802271327246,
+            "name": "开始震荡",
+            "noteCn": "开始",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "concussion",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "震荡指令",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "10",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "震荡时间",
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "震荡时间（分）",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"一级\",\"value\":0},{\"label\":\"二级\",\"value\":1},{\"label\":\"三级\",\"value\":2},{\"label\":\"四级\",\"value\":3}]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "0",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "震荡档位",
+                    "noteEn": null,
+                    "paramCode": "level",
+                    "paramName": "震荡档位",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "start_clean",
+            "id": 1897802271327247,
+            "name": "开始清洗",
+            "noteCn": "开始清洗",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "start_clean",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "开始清洗",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"乙醚\",\"value\":0},{\"label\":\"水\",\"value\":1},{\"label\":\"酒精\",\"value\":2}]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "0",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "清洗液",
+                    "noteEn": null,
+                    "paramCode": "clean_solution",
+                    "paramName": "清洗液",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "(1, 60]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "5",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "清洗时间（分）",
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "清洗时间（分）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "start_dissolve",
+            "id": 1897802271327248,
+            "name": "开始溶解并注入深孔板",
+            "noteCn": "开始溶解并注入深孔板",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "start_dissolve",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "开始溶解指令",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"乙醚\",\"value\":0},{\"label\":\"水\",\"value\":1},{\"label\":\"酒精\",\"value\":2}]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "0",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "反应溶液",
+                    "noteEn": null,
+                    "paramCode": "solution",
+                    "paramName": "反应溶液",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "(0,50]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "20",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "溶液量",
+                    "noteEn": null,
+                    "paramCode": "count",
+                    "paramName": "溶液量（ml）",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "start_dissolve_to_96",
+            "id": 1897802271327249,
+            "name": "开始溶解并注入96孔板",
+            "noteCn": "开始溶解并注入96孔板",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "start_dissolve_96",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "开始溶解指令并注入96孔板",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"乙醚\",\"value\":0},{\"label\":\"水\",\"value\":1},{\"label\":\"酒精\",\"value\":2}]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "0",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "反应溶液",
+                    "noteEn": null,
+                    "paramCode": "solution",
+                    "paramName": "反应溶液",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "(0,50]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "20",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "溶液量",
+                    "noteEn": null,
+                    "paramCode": "count",
+                    "paramName": "溶液量（ml）",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "50ml_centrifuge_tube",
+            "maxHandleSize": 5
+        },
+        {
+            "containerTypeCode": "deep_hole_plate",
+            "maxHandleSize": 7
+        },
+        {
+            "containerTypeCode": "15ml_centrifuge_tube",
+            "maxHandleSize": 10
+        },
+        {
+            "containerTypeCode": "96_hole_plate",
+            "maxHandleSize": 7
+        }
+    ],
+    "code": "liquid_handling_workstation",
+    "commands": [
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "common",
+            "name": "通用指令",
+            "noteCn": "通用指令",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"schedule_robot_1\",\"robotName\":\"调度机器人\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":1,\"maxCount\":10,\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"allocateMode\":\"extend\",\"defaultCount\":5},{\"minCount\":1,\"maxCount\":7,\"containerTypeCode\":\"deep_hole_plate\",\"containerTypeName\":\"深孔板\",\"allocateMode\":\"extend\",\"defaultCount\":1},{\"minCount\":\"1\",\"maxCount\":7,\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\",\"allocateMode\":\"extend\",\"defaultCount\":1},{\"minCount\":\"1\",\"maxCount\":10,\"containerTypeCode\":\"15ml_centrifuge_tube\",\"containerTypeName\":\"15ml离心管\",\"allocateMode\":\"extend\",\"defaultCount\":5}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-deep-hole-plate",
+            "name": "拿取深孔板",
+            "noteCn": "拿取深孔板",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"deep_hole_plate\",\"containerTypeName\":\"深孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"deep_hole_plate_slot\",\"slotTypeName\":\"深孔板槽位\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-96-hole-plate",
+            "name": "拿取96孔板",
+            "noteCn": "拿取96孔板",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"96_hole_plate_slot\",\"slotTypeName\":\"96孔板槽位\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                }
+            ]
+        },
+        {
+            "actionCode": "put_all",
+            "actionName": "put_all指令",
+            "code": "put-all-15ml-cer-tube",
+            "name": "放置所有15ml离心管",
+            "noteCn": "放置所有15ml离心管",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"15ml_centrifuge_tube\",\"containerTypeName\":\"15ml离心管\",\"slotTypeCode\":\"15ml_centrifuge_tube_slot\"}]"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-50ml-cer-tube",
+            "name": "放置50ml离心管",
+            "noteCn": "放置50ml离心管",
+            "noteEn": "put 50ml cer tube",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"slotTypeCode\":\"\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-50ml-cer-tube",
+            "name": "拿取50ml离心管",
+            "noteCn": "拿取50ml离心管",
+            "noteEn": "take 50ml cer tube",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"slotTypeCode\":\"\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-empty",
+            "name": "拿取不存在",
+            "noteCn": "拿取不存在",
+            "noteEn": "take empty",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"XRD_container\",\"containerTypeName\":\"XRD坩埚\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        },
+        {
+            "allCount": 7,
+            "children": [
+                {
+                    "allCount": 7,
+                    "children": [],
+                    "containerType": "container",
+                    "typeCode": "deep_hole_plate",
+                    "typeId": 1514902189540352,
+                    "typeName": "深孔板"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "deep_hole_plate_slot",
+            "typeId": 1514900158448640,
+            "typeName": "深孔板槽位"
+        },
+        {
+            "allCount": 7,
+            "children": [
+                {
+                    "allCount": 7,
+                    "children": [],
+                    "containerType": "container",
+                    "typeCode": "96_hole_plate",
+                    "typeId": 1514902940877824,
+                    "typeName": "96孔板"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "96_hole_plate_slot",
+            "typeId": 1514900981777408,
+            "typeName": "96孔板槽位"
+        }
+    ],
+    "createTime": "2025-06-17 19:41:07",
+    "defaultVersion": true,
+    "definer": 1,
+    "equipManufacturerCode": null,
+    "equipManufacturerName": null,
+    "id": 1490330169574400,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "液站工作站",
+    "noteCn": "液站工作站",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-08-11 14:09:55",
+    "updatedActions": null,
+    "variables": [
+        {
+            "code": "global_int",
+            "dataType": "int",
+            "defaultValue": "-999",
+            "name": "全局int",
+            "noteCn": "全局int",
+            "noteEn": "global int"
+        },
+        {
+            "code": "global_array",
+            "dataType": "array",
+            "defaultValue": "",
+            "name": "全局array",
+            "noteCn": "全局array",
+            "noteEn": null
+        },
+        {
+            "code": "global_object",
+            "dataType": "object",
+            "defaultValue": null,
+            "name": "全局object",
+            "noteCn": "全局object",
+            "noteEn": null
+        }
+    ],
+    "version": "2.0"
+}

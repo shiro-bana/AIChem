@@ -1,0 +1,332 @@
+{
+    "actions": [
+        {
+            "code": "door_open",
+            "id": 1897802270770176,
+            "name": "开门",
+            "noteCn": "打开离心机门",
+            "noteEn": null,
+            "params": null,
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "door_close",
+            "id": 1897802270770177,
+            "name": "关门",
+            "noteCn": "关闭离心机门",
+            "noteEn": null,
+            "params": null,
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "start",
+            "id": 1897802270770178,
+            "name": "开始离心",
+            "noteCn": "开始离心",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "(1, 10000]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "5000",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "离心机转速设置",
+                    "noteEn": null,
+                    "paramCode": "speed",
+                    "paramName": "转速",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "(1,100)",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "5",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "离心时间",
+                    "noteEn": null,
+                    "paramCode": "time",
+                    "paramName": "离心时间（分）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "start",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "",
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "指令名称",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "50ml_centrifuge_tube",
+            "maxHandleSize": 10
+        }
+    ],
+    "code": "new_centrifugation",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "allocate分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "分配容器信息",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":2,\"maxCount\":10,\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"allocateMode\":\"extend\",\"defaultCount\":2}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put_all",
+            "actionName": "put_all指令",
+            "code": "put-input",
+            "name": "放置所有50ml离心管",
+            "noteCn": "放置所有50ml离心管",
+            "noteEn": "",
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"slotTypeCode\":\"50ml_centrifuge_tube_slot\"}]"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                }
+            ]
+        },
+        {
+            "actionCode": "take_all",
+            "actionName": "take_all指令",
+            "code": "take-input",
+            "name": "拿取所有50ml离心管",
+            "noteCn": "拿取所有50ml离心管",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"slotTypeCode\":\"50ml_centrifuge_tube_slot\"}]"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put",
+            "name": "放置50ml离心管",
+            "noteCn": "放置50ml离心管",
+            "noteEn": "put",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\",\"slotTypeCode\":\"\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take",
+            "name": "拿取50ml离心管",
+            "noteCn": "拿取50ml离心管",
+            "noteEn": "take",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"50ml_centrifuge_tube\",\"containerTypeName\":\"50ml离心管\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"multi_robot_002\",\"robotName\":\"高新多联动机器人2号\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 10,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "50ml_centrifuge_tube_slot",
+            "typeId": 1515375074837504,
+            "typeName": "50ml离心管槽位"
+        }
+    ],
+    "createTime": "2025-06-18 09:26:04",
+    "defaultVersion": true,
+    "definer": 1,
+    "equipManufacturerCode": null,
+    "equipManufacturerName": null,
+    "id": 1491952095331328,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "新离心机",
+    "noteCn": "生物化学离心机",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-08-11 08:59:50",
+    "updatedActions": null,
+    "variables": [],
+    "version": "2.0"
+}

@@ -1,0 +1,30 @@
+{
+    "actions": [],
+    "allocates": [],
+    "code": "sintering_workstation",
+    "commands": [],
+    "containerSettings": [],
+    "createTime": "2025-08-21 17:41:25",
+    "defaultVersion": true,
+    "definer": 1,
+    "equipManufacturerCode": null,
+    "equipManufacturerName": null,
+    "id": 1674119920288768,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "烧结工作站",
+    "noteCn": "346电极实验室烧结工作站",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-08-22 09:34:52",
+    "updatedActions": null,
+    "variables": [],
+    "version": "346-烧结"
+}

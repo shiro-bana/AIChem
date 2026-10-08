@@ -1,0 +1,849 @@
+{
+    "actions": [
+        {
+            "code": "test_cmd",
+            "id": 1897802271720457,
+            "name": "占位指令",
+            "noteCn": "占位指令",
+            "noteEn": "test cmd",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "name",
+                            "paramName": "姓名",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "int",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "age",
+                            "paramName": "年龄",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        }
+                    ],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "object",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "json_val",
+                    "paramName": "",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": null,
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "string_val",
+                    "paramName": "",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "bottle_storage",
+            "maxHandleSize": 10
+        },
+        {
+            "containerTypeCode": "96_hole_plate",
+            "maxHandleSize": 1
+        },
+        {
+            "containerTypeCode": "54_hole_plate",
+            "maxHandleSize": 1
+        }
+    ],
+    "code": "elec_chem_storage_workstation",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": "allocation",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":0,\"maxCount\":10,\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"defaultCount\":0,\"allocateMode\":\"new\"},{\"minCount\":0,\"maxCount\":1,\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\",\"allocateMode\":\"extend\",\"defaultCount\":0},{\"minCount\":0,\"maxCount\":\"100\",\"containerTypeCode\":\"54_hole_plate\",\"containerTypeName\":\"液相54孔板\",\"allocateMode\":\"extend\",\"defaultCount\":0}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[{\"workstationCode\":\"starting_station_303_spectroscopy\",\"workstationName\":\"303谱学平台物料站\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take",
+            "name": "拿取容器",
+            "noteCn": "拿取容器",
+            "noteEn": "take",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"slotTypeCode\":\"\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put",
+            "name": "放置容器",
+            "noteCn": "放置容器",
+            "noteEn": "put",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"slotTypeCode\":\"\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_material\",\"robotName\":\"航发_物料站\"},{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take_96孔板拿取",
+            "name": "96孔板拿取",
+            "noteCn": "96孔板拿取",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_2\",\"robotName\":\"航发_电化学\"},{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{\"workstationCode\":\"\",\"workstationName\":\"\"}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put_96孔板放置",
+            "name": "96孔板放置",
+            "noteCn": "96孔板放置",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_2\",\"robotName\":\"航发_电化学\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take_yx_plate",
+            "name": "拿取液相板",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"54_hole_plate\",\"containerTypeName\":\"液相54孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"hole_plate_rack\",\"containerTypeName\":\"孔板架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put_yx_palte",
+            "name": "放置液相板",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"54_hole_plate\",\"containerTypeName\":\"液相54孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_material\",\"robotName\":\"航发_物料站\"},{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"hole_plate_rack\",\"containerTypeName\":\"孔板架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "return",
+            "name": "还回容器",
+            "noteCn": "还回容器",
+            "noteEn": "return",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{\"workstationCode\":\"magnetic_stirring_303_lab_spectroscopy\",\"workstationName\":\"303谱学磁力搅拌工作站\"}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-hts",
+            "name": "放置合成晶体",
+            "noteCn": "合成晶体放置",
+            "noteEn": "put hts",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-hts",
+            "name": "拿取合成晶体",
+            "noteCn": "拿取合成晶体",
+            "noteEn": "take hts",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "lock",
+            "actionName": "lock加锁指令",
+            "code": "lock",
+            "name": "独占机器人",
+            "noteCn": "独占机器人",
+            "noteEn": "lock",
+            "params": [
+                {
+                    "paramCode": "robotList",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "unlock",
+            "actionName": "unlock解锁指令",
+            "code": "unlock",
+            "name": "释放机器人",
+            "noteCn": "释放机器人",
+            "noteEn": "unlock",
+            "params": [
+                {
+                    "paramCode": "robotList",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "move_96_hole_plate",
+            "name": "转运96孔板",
+            "noteCn": "转运96孔板",
+            "noteEn": "move 96 hole plate",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "recycle_96_hole_plate",
+            "name": "回收96孔板",
+            "noteCn": "回收96孔板",
+            "noteEn": "recycle 96 hole plate",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-54-hole-plate",
+            "name": "放置液相孔板",
+            "noteCn": "放置液相孔板",
+            "noteEn": "put 54 hole plate",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"54_hole_plate\",\"containerTypeName\":\"液相54孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_material\",\"robotName\":\"航发_物料站\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"hole_plate_rack\",\"containerTypeName\":\"孔板架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take-54-hole-plate",
+            "name": "拿取液相孔板",
+            "noteCn": "拿取液相孔板",
+            "noteEn": "take 54 hole plate",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"54_hole_plate\",\"containerTypeName\":\"液相54孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_material\",\"robotName\":\"航发_物料站\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"hole_plate_rack\",\"containerTypeName\":\"孔板架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put-transfer-54-hole-plate",
+            "name": "转运液相板",
+            "noteCn": "转运液相板",
+            "noteEn": "transfer 54 hole plate",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"54_hole_plate\",\"containerTypeName\":\"液相54孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"hole_plate_rack\",\"containerTypeName\":\"孔板架\"}"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 2,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        },
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "96_hole_plate_slot",
+            "typeId": 1514900981777408,
+            "typeName": "96孔板槽位"
+        },
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "plate_rack_slot",
+            "typeId": 1749559907288064,
+            "typeName": "孔板架槽位"
+        }
+    ],
+    "createTime": "2025-08-14 19:56:38",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "AFH",
+    "equipManufacturerName": "其他",
+    "id": 1654567694238720,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "置物工作站",
+    "noteCn": "样品静置工作站为样品提供一个稳定、安静的环境，用于样品的静置和平衡。在一些实验中，样品在处理后需要一定的时间进行静置，以达到稳定的状态或使某些反应充分进行。该工作站可以精确控制环境的温度、湿度等条件，确保样品在静置过程中不受外界干扰。例如在一些化学分析实验中，样品在混合或反应后需要静置一段时间以达到均匀的状态，样品静置工作站能够提供适宜的条件，保证实验结果的准确性。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [
+        {
+            "code": "global_dict",
+            "dataType": "object",
+            "defaultValue": null,
+            "name": "全局dict",
+            "noteCn": "全局字典",
+            "noteEn": "global dict"
+        },
+        {
+            "code": "global_string",
+            "dataType": "string",
+            "defaultValue": "",
+            "name": "全局string",
+            "noteCn": "全局string",
+            "noteEn": "global string"
+        }
+    ],
+    "version": "303-谱学平台"
+}

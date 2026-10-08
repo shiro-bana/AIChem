@@ -1,0 +1,45 @@
+{
+    "actions": [
+        {
+            "code": "start",
+            "id": 1897802270868480,
+            "name": "开始组装",
+            "noteCn": "开始组装",
+            "noteEn": "start",
+            "params": null,
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [],
+    "code": "electrode_assembly_workstation",
+    "commands": [],
+    "containerSettings": [],
+    "createTime": "2025-08-21 17:44:51",
+    "defaultVersion": true,
+    "definer": 1,
+    "equipManufacturerCode": null,
+    "equipManufacturerName": null,
+    "id": 1674126680261632,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "电极组装工作站",
+    "noteCn": "346电极实验室电极组转工作站",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-08-21 18:34:40",
+    "updatedActions": null,
+    "variables": [],
+    "version": "346-电极组装"
+}

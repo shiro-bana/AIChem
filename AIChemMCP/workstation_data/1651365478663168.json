@@ -1,0 +1,221 @@
+{
+    "actions": [
+        {
+            "code": "transfer",
+            "id": 1897802271491092,
+            "name": "转移指令",
+            "noteCn": "转移指令",
+            "noteEn": "transfer",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "move",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "动作",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"303实验室\",\"value\":\"303\"},{\"label\":\"306实验室\",\"value\":\"306\"},{\"label\":\"122实验室\",\"value\":\"122\"}]",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "destination",
+                    "paramName": "目的地",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "lock",
+            "id": 1897802271491093,
+            "name": "加锁",
+            "noteCn": "加锁",
+            "noteEn": "lock",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "lock",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "动作",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "unlock",
+            "id": 1897802271491094,
+            "name": "释放锁",
+            "noteCn": "释放锁",
+            "noteEn": "unlock",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "unlock",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "动作",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "bottle_storage",
+            "maxHandleSize": 10
+        }
+    ],
+    "code": "transfer_workstation",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "分配容器",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"maxCount\":10,\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"allocateMode\":\"extend\",\"defaultCount\":10}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        }
+    ],
+    "createTime": "2025-08-13 16:47:55",
+    "defaultVersion": true,
+    "definer": 1,
+    "equipManufacturerCode": null,
+    "equipManufacturerName": null,
+    "id": 1651365478663168,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "转运工作站",
+    "noteCn": "擎朗机器人",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-08-28 11:43:14",
+    "updatedActions": null,
+    "variables": [],
+    "version": "擎朗"
+}

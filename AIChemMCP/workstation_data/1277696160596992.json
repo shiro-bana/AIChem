@@ -1,0 +1,109 @@
+{
+    "actions": [
+        {
+            "code": "start",
+            "id": 1897802271294471,
+            "name": "开始",
+            "noteCn": "开始",
+            "noteEn": "start",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "file",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "definitionParamUrl",
+                    "paramName": "上传参数",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "file",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "OUTPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "resultCode",
+                    "paramName": "输出参数",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/send"
+            }
+        }
+    ],
+    "allocates": [],
+    "code": "single_atom_enzyme_mimicking",
+    "commands": [],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "slot_500ml",
+            "typeId": 1121328281715712,
+            "typeName": "500毫升槽位"
+        }
+    ],
+    "createTime": "2025-04-03 17:09:52",
+    "defaultVersion": true,
+    "definer": 0,
+    "equipManufacturerCode": "AFH",
+    "equipManufacturerName": "其他",
+    "id": 1277696160596992,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "单原子仿酶催化平台",
+    "noteCn": "单原子仿酶催化测试平台是专门用于研究单原子仿酶催化剂性能的实验平台。它可以模拟各种催化反应条件，精确控制反应温度、压力、反应物浓度等参数。通过先进的检测技术，如质谱、光谱等，实时监测反应过程中的物质变化和催化剂的活性。能够对单原子仿酶催化剂的催化活性、选择性、稳定性等性能进行全面评估。在能源催化、环境催化等领域，对于开发高效、低成本的单原子仿酶催化剂具有重要意义，有助于推动新型催化技术的发展和应用。",
+    "noteEn": "",
+    "paramUrl": "/files/pan-dev/%E5%AF%BC%E5%85%A5%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%9D%BF_%E5%BF%AB%E9%80%9F%E6%B5%8B%E8%AF%95_V1.1.xls",
+    "resultSetting": {
+        "preview": null,
+        "type": "any",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "1.0"
+}

@@ -1,0 +1,984 @@
+#!/usr/bin/env python3
+"""
+使用 Agent 形式调用 OpenAI API 将 Pipelines 中的 Markdown 文件转换为工作站流程
+模仿 AIChemMCP/agent.py 的结构
+"""
+
+import os
+import sys
+import json
+import re
+import importlib.util
+from pathlib import Path
+from typing import List, Dict, Optional
+from openai import OpenAI
+
+# 导入 RAGDatabase
+sys.path.append('/opt/data/private/src/AIChemMCP')
+from rag_database import RAGDatabase
+
+
+def load_workstation_notes(workstation_dir: str = "/opt/data/private/src/AIChem-LaboratorySimulator-main/src/workstation_instances") -> Dict[str, str]:
+    """
+    动态加载工作站目录中所有工作站的 noteCN 描述
+
+    Args:
+        workstation_dir: 工作站实例目录路径
+
+    Returns:
+        Dict[str, str]: 工作站名称到 noteCN 的映射
+    """
+    workstation_notes = {}
+
+    if not os.path.exists(workstation_dir):
+        print(f"[WARNING] 工作站目录不存在: {workstation_dir}")
+        return workstation_notes
+
+    # 将工作站父目录添加到 Python 路径中，以便导入 workstation 和 sample 模块
+    parent_dir = os.path.dirname(workstation_dir)
+    if parent_dir not in sys.path:
+        sys.path.insert(0, parent_dir)
+        print(f"[INFO] 添加到 Python 路径: {parent_dir}")
+
+    # 遍历目录中的所有 Python 文件
+    for filename in os.listdir(workstation_dir):
+        if not filename.endswith('.py') or filename.startswith('__'):
+            continue
+
+        file_path = os.path.join(workstation_dir, filename)
+
+        try:
+            # 动态导入模块
+            spec = importlib.util.spec_from_file_location(filename[:-3], file_path)
+            if spec is None or spec.loader is None:
+                continue
+
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+
+            # 调用 get_description() 函数
+            if hasattr(module, 'get_description'):
+                desc = module.get_description()
+                name = desc.get('name', '')
+                note_cn = desc.get('noteCn', '')
+
+                if name and note_cn:
+                    workstation_notes[name] = note_cn
+                    print(f"[LOADED] {name}: {note_cn[:50]}...")
+
+        except Exception as e:
+            # 打印错误信息以便调试
+            print(f"[ERROR] 加载失败 {filename}: {e}")
+            continue
+
+    return workstation_notes
+
+
+# 读取 OpenAI API Key
+API_KEY_FILE = "/opt/data/private/src/AIChemMCP/static/OPENAI_API_KEY"
+if os.path.exists(API_KEY_FILE):
+    with open(API_KEY_FILE, 'r') as f:
+        api_key = f.read().strip()
+    os.environ["OPENAI_API_KEY"] = api_key
+else:
+    raise ValueError(f"API Key 文件不存在: {API_KEY_FILE}")
+
+
+# 可用的工作站列表
+WORKSTATIONS = [
+    "离心管架分液站",
+    "液相色谱仪",
+    "固体进样站",
+    "高通量酶标仪工作站",
+    "高通量XRD工作站",
+    "物料站",
+    "紫外光谱工作站",
+    "多通道固体进样器",
+    "气相色谱仪",
+    "离心机",
+    "光催化工作站",
+    "双工位电化学工作站",
+    "磁力搅拌工作站",
+    "离心纯化工作站",
+    "置物工作站",
+    "烘干机",
+    "超声清洗工作站",
+    "高通量红外光谱工作站",
+    "1ml液体进样站"
+]
+
+
+def discover_workstation_transformations(workstation_dir: str = "/opt/data/private/src/AIChem-LaboratorySimulator-main/src/workstation_instances",
+                                        test_script_path: str = "/opt/data/private/src/AIChem-LaboratorySimulator-main/src/playground_flow_test_all_workstations.py") -> Dict[str, Dict]:
+    """
+    发现工作站的转换功能（相态转换、容器转换等）
+
+    通过两个渠道发现：
+    1. 扫描 workstation_instances 目录中的 ability 函数
+    2. 解析测试脚本中的 simulate_step 函数
+
+    Args:
+        workstation_dir: 工作站实例目录路径
+        test_script_path: 测试脚本路径
+
+    Returns:
+        Dict[str, Dict]: 工作站名称到转换功能的映射
+        {
+            "工作站名": {
+                "phase_transform": {"from": "...", "to": "..."},
+                "container_transform": {"from": "...", "to": "..."},
+                "volume_transform": {"min": ..., "max": ...},
+                "lid_transform": {...},
+                "description": "..."
+            }
+        }
+    """
+    transformations = {}
+
+    # 1. 从测试脚本中解析转换逻辑
+    if os.path.exists(test_script_path):
+        with open(test_script_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # 查找 simulate_step 函数中的转换逻辑
+        # 匹配模式：elif step_name == 'XXX': 后面的赋值语句（使用更简单的模式）
+        lines = content.split('\n')
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            # 匹配 elif step_name == 'XXX':
+            if re.match(r"\s*elif step_name == '([^']+)':", line):
+                step_match = re.search(r"'([^']+)'", line)
+                if step_match:
+                    step_name = step_match.group(1)
+                    # 收集后续的代码行（直到下一个 elif 或 return）
+                    body_lines = []
+                    j = i + 1
+                    while j < len(lines):
+                        next_line = lines[j]
+                        if re.match(r"\s*(elif |return |def )", next_line):
+                            break
+                        body_lines.append(next_line)
+                        j += 1
+
+                    body = '\n'.join(body_lines)
+                    transforms = {}
+
+                    # 检测相态转换
+                    phase_match = re.search(r"subcontainer_phase\]\s*=\s*['\"]([^'\"]+)['\"]", body)
+                    if phase_match:
+                        transforms['phase_transform'] = {'to': phase_match.group(1)}
+
+                    # 检测容器转换
+                    container_match = re.search(r"container\]\s*\[?['\"]container_name['\"]\]?\s*=\s*['\"]([^'\"]+)['\"]", body)
+                    if container_match:
+                        transforms['container_transform'] = {'to': container_match.group(1)}
+
+                    # 检测子容器转换
+                    subcontainer_match = re.search(r"subcontainer\]\s*\[?['\"]subcontainer_name['\"]\]?\s*=\s*['\"]([^'\"]+)['\"]", body)
+                    if subcontainer_match:
+                        if 'container_transform' not in transforms:
+                            transforms['container_transform'] = {}
+                        transforms['container_transform']['subcontainer_to'] = subcontainer_match.group(1)
+
+                    # 检测体积转换
+                    volume_matches = re.findall(r"subcontainer_volume\]\s*=\s*(.+?)(?:\n|#)", body)
+                    if volume_matches:
+                        transforms['volume_transform'] = [v.strip() for v in volume_matches]
+
+                    # 检测盖子转换
+                    lid_match = re.search(r"covered\]\s*=\s*(True|False)", body)
+                    if lid_match:
+                        transforms['lid_transform'] = {'to': lid_match.group(1)}
+
+                    # 检测条件性相态转换
+                    conditional_phase = re.findall(r"if\s+.*subcontainer_phase\]\s*==\s*['\"]([^'\"]+)['\"]:.*?subcontainer_phase\]\s*=\s*['\"]([^'\"]+)['\"]", body, re.DOTALL)
+                    if conditional_phase:
+                        transforms['conditional_phase_transform'] = [{'from': p[0], 'to': p[1]} for p in conditional_phase]
+
+                    if transforms:
+                        # 添加描述（取第一个注释）
+                        comment_match = re.search(r"# (.+)", body_lines[0] if body_lines else "")
+                        desc = comment_match.group(1) if comment_match else "自动转换"
+                        transforms['description'] = desc
+                        transforms['source'] = 'test_script'
+
+                        # 获取标准工作站名称
+                        ws_name = None
+                        for std_name in ["液相色谱仪", "高通量酶标仪工作站", "置物工作站", "烘干机", "气相色谱仪"]:
+                            if std_name in step_name or step_name in std_name:
+                                ws_name = std_name
+                                break
+
+                        if ws_name:
+                            transformations[ws_name] = transforms
+
+                i = j
+            else:
+                i += 1
+
+    # 2. 扫描工作站实例文件中的 ability 函数
+    if os.path.exists(workstation_dir):
+        parent_dir = os.path.dirname(workstation_dir)
+        if parent_dir not in sys.path:
+            sys.path.insert(0, parent_dir)
+
+        for filename in os.listdir(workstation_dir):
+            if not filename.endswith('.py') or filename.startswith('__'):
+                continue
+
+            file_path = os.path.join(workstation_dir, filename)
+
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+
+                # 调用 get_description() 获取名称
+                spec = importlib.util.spec_from_file_location(filename[:-3], file_path)
+                if spec and spec.loader:
+                    module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(module)
+
+                    if hasattr(module, 'get_description'):
+                        desc = module.get_description()
+                        ws_name = desc.get('name', '')
+                    else:
+                        continue
+
+                    if not ws_name:
+                        continue
+
+                    # 如果已经从测试脚本中发现，跳过
+                    if ws_name in transformations:
+                        continue
+
+                    # 分析 ability 函数中的转换
+                    transforms = {}
+
+                    # 检测相态转换
+                    phase_pattern = r"subcontainer_phase\]\s*=\s*['\"]([^'\"]+)['\"]"
+                    phases = re.findall(phase_pattern, content)
+                    if phases:
+                        # 去重并获取最后一个（通常是输出）
+                        unique_phases = list(dict.fromkeys(phases))
+                        if len(unique_phases) > 0:
+                            transforms['phase_transform'] = {'to': unique_phases[-1]}
+
+                    # 检测体积转换
+                    volume_pattern = r"subcontainer_volume\]\s*=\s*(.+?)(?:\n|$)"
+                    volumes = re.findall(volume_pattern, content)
+                    if volumes:
+                        transforms['volume_transform'] = volumes
+
+                    # 检测条件转换
+                    conditional_pattern = r"if\s+.*covered.*?:(.*?covered\s*=\s*(True|False))"
+                    conditional_matches = re.findall(conditional_pattern, content, re.DOTALL)
+                    if conditional_matches:
+                        transforms['conditional_transform'] = True
+
+                    if transforms:
+                        transforms['description'] = desc.get('noteCn', '')[:50]
+                        transforms['source'] = 'workstation_code'
+                        transformations[ws_name] = transforms
+
+            except Exception as e:
+                print(f"[WARNING] 分析文件失败 {filename}: {e}")
+                continue
+
+    return transformations
+
+
+def print_workstation_transformations(transformations: Dict[str, Dict]):
+    """
+    打印工作站转换功能报告
+
+    Args:
+        transformations: discover_workstation_transformations 的返回结果
+    """
+    print("\n" + "="*80)
+    print("工作站转换功能发现报告")
+    print("="*80)
+
+    if not transformations:
+        print("未发现任何转换功能")
+        return
+
+    for ws_name, transforms in sorted(transformations.items()):
+        print(f"\n【{ws_name}】")
+        print(f"  描述: {transforms.get('description', 'N/A')}")
+        print(f"  来源: {transforms.get('source', 'unknown')}")
+
+        if 'phase_transform' in transforms:
+            print(f"  ✓ 相态转换: → {transforms['phase_transform']['to']}")
+
+        if 'conditional_phase_transform' in transforms:
+            for cond in transforms['conditional_phase_transform']:
+                print(f"  ✓ 条件相态转换: {cond['from']} → {cond['to']}")
+
+        if 'container_transform' in transforms:
+            ct = transforms['container_transform']
+            if 'to' in ct:
+                print(f"  ✓ 容器转换: → {ct['to']}")
+            if 'subcontainer_to' in ct:
+                print(f"    子容器: → {ct['subcontainer_to']}")
+
+        if 'volume_transform' in transforms:
+            print(f"  ✓ 体积转换: {transforms['volume_transform']}")
+
+        if 'lid_transform' in transforms:
+            print(f"  ✓ 盖子转换: → {transforms['lid_transform']['to']}")
+
+    print("\n" + "="*80)
+    print(f"共发现 {len(transformations)} 个具有转换功能的工作站")
+    print("="*80 + "\n")
+
+
+class PipelineToWorkstationAgent:
+    """将实验流程 Markdown 文件转换为工作站流程的 Agent"""
+
+    def __init__(self, model="gpt-4o", rag_db_path="/opt/data/private/src/AIChemMCP/rag_database.json",
+                 workstation_dir="/opt/data/private/src/AIChem-LaboratorySimulator-main/src/workstation_instances"):
+        api_key = os.environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY 环境变量未设置！")
+
+        self.client = OpenAI(api_key=api_key)
+        self.model = model
+        self.workstations = WORKSTATIONS
+        # 初始化 RAG 数据库
+        self.rag_db = RAGDatabase(rag_db_path)
+        # 加载工作站详细描述
+        self.workstation_notes = load_workstation_notes(workstation_dir)
+
+        print(f"[AGENT] 初始化完成，模型: {self.model}")
+        print(f"[AGENT] 可用工作站数量: {len(self.workstations)}")
+        print(f"[AGENT] 已加载 {len(self.workstation_notes)} 个工作站的详细描述")
+        print(f"[AGENT] RAG数据库初始化完成，当前包含 {self.rag_db.get_entry_count()} 条记录")
+
+    def build_system_prompt(self) -> str:
+        """构建系统提示"""
+        prompt = "# 角色与目标\n"
+        prompt += "你是一位专家级的化学实验室工作流分析专家。你的任务是分析实验流程的 Markdown 文档，"
+        prompt += "识别出实验步骤，并将每个步骤映射到最合适的实验室工作站。\n\n"
+
+        prompt += "# 可用工作站列表及详细功能说明\n"
+        prompt += "以下是你可以使用的工作站及其详细功能描述，你必须从中选择最合适的工作站：\n\n"
+
+        # 使用动态加载的描述，如果没有则使用简单的名称
+        for i, ws in enumerate(self.workstations, 1):
+            if ws in self.workstation_notes:
+                # 使用从工作站文件加载的详细描述
+                note_cn = self.workstation_notes[ws]
+                prompt += f"{i}. **{ws}**: {note_cn}\n\n"
+            else:
+                # 没有详细描述的工作站，使用简单名称
+                prompt += f"{i}. **{ws}** (暂无详细描述)\n"
+
+        prompt += "\n# 工作流生成规则\n"
+        prompt += "1. **顺序合理**: 确保工作流的顺序符合实验逻辑\n"
+        prompt += "2. **以物料站开始**: 除非特殊说明，通常以物料站获取材料开始\n"
+        prompt += "3. **兼容性检查**: 确保相邻工作站的输入输出兼容\n"
+        prompt += "   - 固体 → 液体: 需要添加液体处理步骤\n"
+        prompt += "   - 干燥后 → 反应: 需要重新分散\n"
+        prompt += "4. **简化原则**: 只包含必要的工作站步骤，避免冗余\n\n"
+
+        prompt += "# 输出要求\n"
+        prompt += "你必须返回一个 JSON 格式，包含实验问题和对应的工作站列表，格式如下：\n"
+        prompt += "```json\n"
+        prompt += "{\n"
+        prompt += "  \"question\": \"用一句话描述这个实验要解决的问题或目标\",\n"
+        prompt += "  \"workstations\": [\"工作站1\", \"工作站2\", ...]\n"
+        prompt += "}\n"
+        prompt += "```\n\n"
+
+        prompt += "重要：\n"
+        prompt += "1. question 应该是一个简洁的问题描述，例如：'如何制备金纳米粒子与光谱表征？'\n"
+        prompt += "2. 只能使用上述列出的工作站名称，不能添加新的工作站名称。\n"
+
+        return prompt
+
+    def build_rag_enhanced_prompt(self, markdown_content: str, top_k=3, feedback_text: str = None) -> str:
+        """
+        构建包含RAG上下文的增强提示
+
+        Args:
+            markdown_content: Markdown 文档内容
+            top_k: 从RAG数据库中获取的相似条目的数量
+            feedback_text: 反馈文本（包含失败分析和建议）
+
+        Returns:
+            str: 增强的系统提示
+        """
+        # 获取基础系统提示
+        base_prompt = self.build_system_prompt()
+
+        # 从Markdown中提取简短描述作为查询
+        # 取前500个字符作为查询
+        query = markdown_content[:500]
+
+        # 从RAG数据库获取相关上下文
+        print(f"[AGENT] 正在从RAG数据库中查找相关的历史实验流程...")
+        context = self.rag_db.get_relevant_context(query, top_k)
+
+        # 添加RAG上下文到提示中
+        rag_prompt = base_prompt + "\n# 相关历史实验流程参考 (RAG Context)\n"
+        rag_prompt += "---\n"
+        rag_prompt += context
+        rag_prompt += "---\n\n"
+        rag_prompt += "# 使用RAG上下文的指导原则\n"
+        rag_prompt += "1. **优先使用RAG示例中的工作站名称**: 如果RAG示例中显示了带「[原名称: xxx]」的工作站，**必须优先使用完整名称**（如\"离心纯化工作站\"而不是\"离心机\"）\n"
+        rag_prompt += "2. **参考历史经验**: 仔细分析上述相关的历史实验流程，学习其工作站选择和顺序安排\n"
+        rag_prompt += "3. **避免重复错误**: 如果历史流程中有遇到兼容性问题，请参考其解决方案\n"
+        rag_prompt += "4. **灵活应用**: 根据当前实验的具体需求，在参考历史的基础上进行调整，但优先考虑RAG中成功的工作站组合\n"
+        rag_prompt += "5. **确保兼容性**: 参考历史流程中的兼容性处理方式（如相态转换、容器匹配等）\n"
+        rag_prompt += "6. **特别提醒 - 离心操作的选择**:\n"
+        rag_prompt += "   - 如果实验涉及纳米颗粒、催化剂、材料合成：使用 \"离心纯化工作站\"（输出纯固体或微量液体）\n"
+        rag_prompt += "   - 如果实验涉及生物样品分离：使用 \"离心机\"（输出固液分离状态）\n\n"
+
+        # 如果有反馈文本，添加到提示中
+        if feedback_text:
+            rag_prompt += "\n# 上次生成的失败反馈 (必须参考)\n"
+            rag_prompt += "---\n"
+            rag_prompt += feedback_text
+            rag_prompt += "---\n\n"
+            rag_prompt += "# 重要提示：基于反馈的改进要求\n"
+            rag_prompt += "1. **必须解决上次失败的根本原因**: 仔细阅读上述失败反馈，确保新的流程解决所有提到的问题\n"
+            rag_prompt += "2. **只能使用预定义的工作站**: 绝对不能创建新的工作站名称！如果反馈建议添加'相态转换'、'样品转移'等步骤，请用以下工作站组合实现：\n"
+            rag_prompt += "   - 相态转换：使用 置物工作站(静置分层)、离心机(分离)、烘干机(干燥) 等组合\n"
+            rag_prompt += "   - 样品转移/分装：使用 1ml液体进样站(精确移液)\n"
+            rag_prompt += "3. **不要添加'盖子操作'**: 工作站系统会自动处理容器的盖子状态，不需要（也不能）添加独立的'盖子操作'、'盖子关闭'、'盖子打开'等步骤\n"
+            rag_prompt += "4. **解决盖子问题的正确方法**: 如果反馈提到离心机需要盖子，这通常意味着流程设计有问题。正确的解决方法可能是：\n"
+            rag_prompt += "   - 检查流程逻辑，确保步骤顺序合理\n"
+            rag_prompt += "   - 使用不同的工作站组合\n"
+            rag_prompt += "   - 避免使用无法满足离心机要求的工作站\n"
+            rag_prompt += "5. **调整步骤顺序**: 如果反馈指出顺序问题，必须调整\n"
+            rag_prompt += "6. **确保约束条件匹配**: 容器类型、相态、体积等必须符合工作站要求\n"
+            rag_prompt += "7. **避免无效工作站**: 绝对不要使用'相态转换'、'样品转移到孔板'、'移液操作'、'盖子操作'等名称作为工作站！\n\n"
+
+        return rag_prompt
+
+    def extract_workflow_from_markdown(self, markdown_content: str, use_rag: bool = True, max_attempts: int = 3, feedback_text: str = None) -> Dict[str, any]:
+        """
+        使用 OpenAI API 从 Markdown 内容中提取工作流
+
+        Args:
+            markdown_content: Markdown 文件内容
+            use_rag: 是否使用 RAG 增强提示（默认 True）
+            max_attempts: 最大生成尝试次数（包括兼容性检查后的重新生成）
+            feedback_text: 反馈文本（包含失败分析和建议）
+
+        Returns:
+            Dict[str, any]: 包含 question 和 workstations 的字典
+        """
+        # 初始系统提示（如果提供反馈文本，强制使用 RAG）
+        if feedback_text:
+            use_rag = True
+        base_system_prompt = self.build_rag_enhanced_prompt(markdown_content, top_k=3, feedback_text=feedback_text) if use_rag else self.build_system_prompt()
+
+        user_prompt = f"""请分析以下实验流程 Markdown 文档：
+1. 提取实验要解决的问题或目标（用一个问题表述）
+2. 识别实验步骤并将每个步骤映射到最合适的工作站
+
+文档内容：
+```
+{markdown_content[:10000]}  # 限制长度避免 token 超限
+```
+
+要求：
+1. 仔细阅读文档，理解实验要解决的问题或目标
+2. 将每个步骤映射到最合适的工作站
+3. 确保工作流的顺序合理
+4. 只使用提供的工作站列表中的名称
+5. 返回纯 JSON 格式，不要包含其他文本
+"""
+
+        # 兼容性检查后的重新生成循环
+        for attempt in range(max_attempts):
+            # 如果不是第一次尝试，在提示中添加兼容性问题信息
+            current_system_prompt = base_system_prompt
+            if attempt > 0:
+                current_system_prompt += f"\n\n# 重要提醒：上次生成的计划存在兼容性问题，请参考上述问题描述重新生成。特别注意相态转换和约束条件匹配。"
+
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": current_system_prompt},
+                        {"role": "user", "content": user_prompt}
+                    ],
+                    temperature=0.1,
+                    response_format={"type": "json_object"}
+                )
+
+                result_text = response.choices[0].message.content
+
+                # 解析 JSON
+                try:
+                    # 提取 JSON 部分
+                    if "```json" in result_text:
+                        json_str = result_text.split("```json")[1].split("```")[0].strip()
+                    elif "```" in result_text:
+                        json_str = result_text.split("```")[1].strip()
+                    else:
+                        json_str = result_text.strip()
+
+                    result = json.loads(json_str)
+                    question = result.get("question", "")
+                    workstations = result.get("workstations", [])
+
+                    # 验证工作站名称
+                    valid_workstations = []
+                    for ws in workstations:
+                        if ws in self.workstations:
+                            valid_workstations.append(ws)
+                        else:
+                            print(f"  警告: 跳过无效的工作站名称: {ws}")
+
+                    # 如果没有提取到问题，使用默认描述
+                    if not question:
+                        question = "实验流程处理"
+
+                    # 检查兼容性
+                    compatibility_result = self.check_plan_compatibility(valid_workstations)
+
+                    if compatibility_result['compatible']:
+                        print(f"  ✓ 兼容性检查通过")
+                        return {
+                            "question": question,
+                            "workstations": valid_workstations
+                        }
+                    else:
+                        print(f"  ⚠ 兼容性问题 (尝试 {attempt + 1}/{max_attempts}):")
+                        for issue in compatibility_result['issues']:
+                            print(f"    - {issue}")
+
+                        if attempt < max_attempts - 1:
+                            print(f"  → 正在重新生成...")
+                            # 将兼容性问题添加到用户提示中
+                            user_prompt += f"\n\n上次生成的计划存在以下兼容性问题：\n"
+                            for issue in compatibility_result['issues']:
+                                user_prompt += f"- {issue}\n"
+                            user_prompt += "\n请重新生成计划，确保解决这些兼容性问题。"
+                            import time
+                            time.sleep(1)
+                        else:
+                            print(f"  ⚠ 警告: 达到最大尝试次数，返回可能有兼容性问题的计划")
+                            return {
+                                "question": question,
+                                "workstations": valid_workstations
+                            }
+
+                except json.JSONDecodeError as e:
+                    print(f"  JSON 解析错误: {e}")
+                    print(f"  原始响应: {result_text}")
+                    if attempt < max_attempts - 1:
+                        continue
+                    else:
+                        raise
+
+            except Exception as e:
+                print(f"  API 调用错误 (尝试 {attempt + 1}/{max_attempts}): {e}")
+                if attempt < max_attempts - 1:
+                    import time
+                    time.sleep(2)
+                    continue
+                else:
+                    raise
+
+        return {"question": "实验流程处理", "workstations": []}
+
+    def check_plan_compatibility(self, workstations: List[str]) -> dict:
+        """
+        检查工作流计划的兼容性
+
+        Args:
+            workstations: 工作站名称列表
+
+        Returns:
+            dict: {'compatible': bool, 'issues': [str]}
+        """
+        if not workstations or len(workstations) <= 1:
+            return {'compatible': True, 'issues': []}
+
+        # 定义关键的不兼容规则
+        incompatible_sequences = [
+            {
+                'from': ['烘干机'],
+                'to': ['双工位电化学工作站'],
+                'issue': '烘干机输出固体，电化学工作站要求悬浊液',
+                'solution': '需要在两者间添加液体处理或磁力搅拌步骤'
+            },
+            {
+                'from': ['烘干机'],
+                'to': ['超声清洗工作站'],
+                'issue': '烘干机输出固体，超声清洗工作站要求液体或悬浊液',
+                'solution': '需要在两者间添加液体处理步骤'
+            },
+            {
+                'from': ['固体进样站', '多通道固体进样器'],
+                'to': ['双工位电化学工作站'],
+                'issue': '固体进样后需要分散成悬浊液',
+                'solution': '需要添加液体处理步骤'
+            },
+            {
+                'from': ['固体进样站', '多通道固体进样器'],
+                'to': ['磁力搅拌工作站'],
+                'issue': '固体进样站输出固体，磁力搅拌工作站要求液体或悬浊液',
+                'solution': '需要在两者间添加液体进样站，先加入液体形成悬浊液'
+            },
+            {
+                'from': ['磁力搅拌工作站'],
+                'to': ['光催化工作站'],
+                'issue': '光催化工作站要求西林瓶且体积不超过15ml，当前为50ml试管且体积可能过大',
+                'solution': '需要在两者间添加样品转移步骤，转移到西林瓶中并分装至小体积'
+            },
+            {
+                'from': ['1ml液体进样站'],
+                'to': ['光催化工作站'],
+                'issue': '光催化工作站要求西林瓶且体积不超过15ml',
+                'solution': '需要添加样品转移步骤，转移到西林瓶中并分装至小体积'
+            },
+            {
+                'from': ['物料站'],
+                'to': ['光催化工作站'],
+                'issue': '光催化工作站要求西林瓶且体积不超过15ml',
+                'solution': '需要添加样品转移步骤，转移到西林瓶中并分装至小体积'
+            },
+            {
+                'from': ['离心纯化工作站'],
+                'to': ['光催化工作站'],
+                'issue': '光催化工作站要求西林瓶且体积不超过15ml',
+                'solution': '需要添加样品转移步骤，转移到西林瓶中并分装至小体积'
+            },
+            {
+                'from': ['离心纯化工作站'],
+                'to': ['高通量红外光谱工作站'],
+                'issue': '离心纯化输出悬浊液，红外光谱工作站要求固体或液体',
+                'solution': '需要在两者间添加烘干或分离步骤，将悬浊液转换为固体或液体'
+            },
+            {
+                'from': ['磁力搅拌工作站', '1ml液体进样站'],
+                'to': ['高通量红外光谱工作站'],
+                'issue': '磁力搅拌/液体进样输出悬浊液，红外光谱工作站要求固体或液体',
+                'solution': '需要在两者间添加烘干或分离步骤，将悬浊液转换为固体或液体'
+            },
+            {
+                'from': ['超声清洗工作站'],
+                'to': ['高通量红外光谱工作站'],
+                'issue': '超声清洗输出悬浊液，红外光谱工作站要求固体或液体',
+                'solution': '需要在两者间添加烘干或分离步骤，将悬浊液转换为固体或液体'
+            },
+            {
+                'from': ['高通量XRD工作站'],
+                'to': ['液相色谱仪'],
+                'issue': 'XRD分析固体，液相色谱需要液体样品',
+                'solution': '需要添加样品溶解步骤'
+            },
+            {
+                'from': ['烘干机'],
+                'to': ['高通量酶标仪工作站'],
+                'issue': '烘干机输出固体，酶标仪要求液体；且当前为50ml离心管，酶标仪要求微孔板容器',
+                'solution': '需要添加液体分散步骤，并将样品转移到微孔板中（每孔0-2ml）'
+            },
+            {
+                'from': ['磁力搅拌工作站', '离心纯化工作站', '超声清洗工作站'],
+                'to': ['高通量酶标仪工作站'],
+                'issue': '当前为50ml离心管且体积可能过大，酶标仪要求微孔板容器且体积0-2ml',
+                'solution': '需要添加样品转移和分装步骤，将样品转移到微孔板中（每孔0-2ml）'
+            },
+            {
+                'from': ['1ml液体进样站'],
+                'to': ['高通量酶标仪工作站'],
+                'issue': '当前为50ml离心管，酶标仪要求微孔板容器且体积0-2ml',
+                'solution': '需要添加样品转移和分装步骤，将样品转移到微孔板中（每孔0-2ml）'
+            },
+            {
+                'from': ['固体进样站', '多通道固体进样器'],
+                'to': ['高通量酶标仪工作站'],
+                'issue': '当前为50ml离心管中的固体，酶标仪要求微孔板容器中的液体（0-2ml）',
+                'solution': '需要添加液体溶解、分散和分装步骤，将样品转移到微孔板中（每孔0-2ml）'
+            },
+            {
+                'from': ['物料站'],
+                'to': ['高通量酶标仪工作站'],
+                'issue': '当前为50ml离心管，酶标仪要求微孔板容器',
+                'solution': '需要添加容器转换步骤，使用微孔板代替离心管'
+            }
+        ]
+
+        # 检查相邻工作站的兼容性
+        compatibility_issues = []
+        for i in range(len(workstations) - 1):
+            current = workstations[i]
+            next_workstation = workstations[i + 1]
+
+            # 检查不兼容规则
+            for rule in incompatible_sequences:
+                if (any(keyword in current for keyword in rule['from']) and
+                    any(keyword in next_workstation for keyword in rule['to'])):
+                    compatibility_issues.append(
+                        f"步骤 {i+1}→{i+2}: {current} → {next_workstation} 不兼容: {rule['issue']}. 建议: {rule['solution']}"
+                    )
+
+        return {
+            'compatible': len(compatibility_issues) == 0,
+            'issues': compatibility_issues
+        }
+
+    def generate_plan_log(self, question: str, workflow: List[str], paper_name: str) -> str:
+        """
+        生成 plan_X.log 格式的输出
+
+        Args:
+            question: 实验问题描述
+            workflow: 工作站列表
+            paper_name: 论文名称
+
+        Returns:
+            str: 格式化的日志内容
+        """
+        output = []
+        output.append(f"问题: {question}")
+        output.append("")
+        output.append("=== 第 1 次执行计划 ===")
+
+        for i, workstation in enumerate(workflow, 1):
+            output.append(f"  步骤 {i}: {{'method': '{workstation}', 'params': {{}}}}")
+
+        output.append("")  # 空行
+
+        return '\n'.join(output)
+
+    def process_single_file(self, md_file: Path, output_file: Path, use_rag: bool = True, feedback_file: str = None) -> bool:
+        """
+        处理单个 Markdown 文件
+
+        Args:
+            md_file: 输入 Markdown 文件路径
+            output_file: 输出 log 文件路径
+            use_rag: 是否使用 RAG 增强提示（默认 True）
+            feedback_file: 反馈文件路径（包含失败分析和建议）
+
+        Returns:
+            bool: 是否成功
+        """
+        print(f"处理: {md_file.name}")
+
+        # 读取反馈文件（如果提供）
+        feedback_text = None
+        if feedback_file and os.path.exists(feedback_file):
+            print(f"  [INFO] 使用反馈文件: {feedback_file}")
+            with open(feedback_file, 'r', encoding='utf-8') as f:
+                feedback_text = f.read()
+        elif feedback_file:
+            print(f"  [WARNING] 反馈文件不存在: {feedback_file}")
+
+        try:
+            # 读取 Markdown 文件
+            with open(md_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            # 调用 Agent 提取工作流和问题
+            result = self.extract_workflow_from_markdown(content, use_rag=use_rag, feedback_text=feedback_text)
+            question = result.get("question", "实验流程处理")
+            workflow = result.get("workstations", [])
+
+            if not workflow:
+                print(f"  警告: 未提取到工作流，使用默认流程")
+                question = "实验流程处理"
+                workflow = ["物料站", "1ml液体进样站", "磁力搅拌工作站"]
+
+            # 生成输出
+            plan_log = self.generate_plan_log(question, workflow, md_file.stem)
+
+            # 写入输出文件
+            output_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(output_file, 'w', encoding='utf-8') as f:
+                # 写入映射信息作为注释
+                f.write(f"# Source: {md_file.name}\n")
+                f.write(f"# Generated: {__import__('datetime').datetime.now().isoformat()}\n")
+                f.write(plan_log)
+
+            # 保存映射关系到单独的文件（用于重新生成）
+            mapping_file = output_file.parent / f"{output_file.stem}_mapping.txt"
+            with open(mapping_file, 'w', encoding='utf-8') as f:
+                f.write(f"{md_file.name}")
+
+            print(f"  -> {output_file.name} (问题: {question}, {len(workflow)} 个步骤)")
+            return True
+
+        except Exception as e:
+            print(f"  错误: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+
+    def process_batch(self, input_dir: str, output_dir: str,
+                     start_idx: int = 1, end_idx: int = None,
+                     batch_size: int = None, use_rag: bool = True, feedback_file: str = None,
+                     target_plan: int = None, input_file: str = None):
+        """
+        批量处理 Pipeline 文件
+
+        Args:
+            input_dir: 输入目录
+            output_dir: 输出目录
+            start_idx: 起始索引（从1开始）
+            end_idx: 结束索引（None 表示处理到最后）
+            batch_size: 批次大小（None 表示处理全部）
+            use_rag: 是否使用 RAG 增强提示（默认 True）
+            feedback_file: 反馈文件路径（包含失败分析和建议）
+            target_plan: 目标 plan 编号（用于覆盖指定的 plan 文件）
+            input_file: 直接指定要处理的 Paper 文件名（如 Paper_8.md）
+        """
+        input_path = Path(input_dir)
+        output_path = Path(output_dir)
+        output_path.mkdir(parents=True, exist_ok=True)
+
+        # 如果直接指定了 input_file，使用它
+        if input_file is not None:
+            md_files = [input_path / input_file]
+            if not md_files[0].exists():
+                print(f"[ERROR] 文件不存在: {md_files[0]}")
+                return
+        else:
+            # 获取所有 Markdown 文件并使用自然排序（按数字大小排序）
+            import re
+            def natural_key(path):
+                # 从文件名中提取数字
+                match = re.search(r'Paper_(\d+)', path.name)
+                if match:
+                    return int(match.group(1))
+                return 0
+
+            md_files = sorted(input_path.glob("Paper_*.md"), key=natural_key)
+
+            # 应用索引范围
+            if end_idx is None:
+                end_idx = len(md_files)
+            md_files = md_files[start_idx - 1:end_idx]
+
+            # 应用批次大小
+            if batch_size is not None:
+                md_files = md_files[:batch_size]
+
+        print(f"[AGENT] 找到 {len(md_files)} 个 Markdown 文件待处理")
+        print(f"[AGENT] 输出目录: {output_dir}")
+        print(f"[AGENT] 使用 RAG: {use_rag}")
+        print()
+
+        success_count = 0
+        for i, md_file in enumerate(md_files, start=start_idx if input_file is None else 1):
+            # 如果指定了 target_plan，使用它作为输出文件名
+            if target_plan is not None:
+                output_file = output_path / f"plan_{target_plan}.log"
+            else:
+                # 如果指定了 input_file，使用原始文件名提取的数字
+                if input_file is not None:
+                    match = re.search(r'Paper_(\d+)', md_file.name)
+                    if match:
+                        file_num = int(match.group(1))
+                        output_file = output_path / f"plan_{file_num}.log"
+                    else:
+                        output_file = output_path / f"plan_{i}.log"
+                else:
+                    output_file = output_path / f"plan_{i}.log"
+
+            if self.process_single_file(md_file, output_file, use_rag=use_rag, feedback_file=feedback_file):
+                success_count += 1
+
+            # 避免API速率限制
+            if i < (len(md_files) + (start_idx if input_file is None else 1) - 1):
+                import time
+                time.sleep(1)
+
+        print()
+        print(f"[AGENT] 批量处理完成!")
+        print(f"[AGENT] 成功: {success_count}/{len(md_files)}")
+
+
+def main():
+    """主函数"""
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="将 Pipelines 中的 Markdown 文件转换为工作站流程"
+    )
+    parser.add_argument(
+        "--input", "-i",
+        default="/opt/data/private/src/Pipelines",
+        help="输入目录 (默认: /opt/data/private/src/Pipelines)"
+    )
+    parser.add_argument(
+        "--output", "-o",
+        default="/opt/data/private/src/pipeline_workstation_logs",
+        help="输出目录 (默认: /opt/data/private/src/pipeline_workstation_logs)"
+    )
+    parser.add_argument(
+        "--start", "-s",
+        type=int,
+        default=1,
+        help="起始索引 (默认: 1)"
+    )
+    parser.add_argument(
+        "--end", "-e",
+        type=int,
+        default=None,
+        help="结束索引 (默认: 处理全部)"
+    )
+    parser.add_argument(
+        "--batch-size", "-b",
+        type=int,
+        default=None,
+        help="批次大小 (默认: 处理全部)"
+    )
+    parser.add_argument(
+        "--model", "-m",
+        default="gpt-4o",
+        help="OpenAI 模型 (默认: gpt-4o)"
+    )
+    parser.add_argument(
+        "--no-rag",
+        action="store_true",
+        help="禁用 RAG 增强提示（默认启用）"
+    )
+    parser.add_argument(
+        "--feedback", "-f",
+        type=str,
+        default=None,
+        help="反馈文件路径（包含失败分析和建议，用于重新生成）"
+    )
+    parser.add_argument(
+        "--target-plan",
+        type=int,
+        default=None,
+        help="目标 plan 编号（用于覆盖指定的 plan 文件，而不是按照 paper 编号命名）"
+    )
+    parser.add_argument(
+        "--input-file",
+        type=str,
+        default=None,
+        help="直接指定要处理的 Paper 文件名（如 Paper_8.md），优先级高于 --start"
+    )
+
+    args = parser.parse_args()
+
+    # 创建 Agent
+    agent = PipelineToWorkstationAgent(model=args.model)
+
+    # 批量处理
+    agent.process_batch(
+        input_dir=args.input,
+        output_dir=args.output,
+        start_idx=args.start,
+        end_idx=args.end,
+        batch_size=args.batch_size,
+        use_rag=not args.no_rag,
+        feedback_file=args.feedback,
+        target_plan=args.target_plan,
+        input_file=args.input_file
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,579 @@
+{
+    "actions": [
+        {
+            "code": "add_liquid",
+            "id": 1897802271884288,
+            "name": "加样",
+            "noteCn": "加样",
+            "noteEn": "add_liquid",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": "",
+                    "childParams": [
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "tube_num",
+                            "paramName": "加样瓶号",
+                            "property": null,
+                            "required": 1,
+                            "script": null,
+                            "selection": "bottle_storage",
+                            "selectorType": "CONTAINER",
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": "0",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "bottle0",
+                            "paramName": "1号原液瓶(ml)",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": "0",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "bottle1",
+                            "paramName": "2号原液瓶(ml)",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": "0",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "bottle2",
+                            "paramName": "3号原液瓶(ml)",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": "0",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "bottle3",
+                            "paramName": "4号原液瓶(ml)",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": "0",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "bottle4",
+                            "paramName": "5号原液瓶(ml)",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "float",
+                            "defaultValue": "0",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "bottle5",
+                            "paramName": "6号原液瓶(ml)",
+                            "property": null,
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        }
+                    ],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "array",
+                    "defaultValue": "",
+                    "elementDataType": "object",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "project",
+                    "paramName": "加样方案",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": "",
+                    "unitTypeName": "",
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "add_liquid",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "操作",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "tip_init",
+            "id": 1897802271884289,
+            "name": "tip头复位",
+            "noteCn": "tip复位",
+            "noteEn": "tip_init",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "tip_init",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "online",
+            "id": 1897802271884290,
+            "name": "强制上线",
+            "noteCn": "强制上线",
+            "noteEn": "online",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "lid_init",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "GET",
+                "url": "/online"
+            }
+        },
+        {
+            "code": "offline",
+            "id": 1897802271884291,
+            "name": "强制下线",
+            "noteCn": "强制下线",
+            "noteEn": "online",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "lid_init",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "GET",
+                "url": "/offline"
+            }
+        },
+        {
+            "code": "reset_init",
+            "id": 1897802271884292,
+            "name": "枪头夹抓复位",
+            "noteCn": "枪头夹抓复位",
+            "noteEn": "reset_init",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "reset_init",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "命令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "bottle_storage",
+            "maxHandleSize": 10
+        }
+    ],
+    "code": "liquid_dispensing",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "allocate分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": "allocation",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":1,\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"allocateMode\":\"extend\",\"maxCount\":10,\"defaultCount\":10}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "undefined"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put放置指令",
+            "code": "put",
+            "name": "放置容器",
+            "noteCn": "放置容器",
+            "noteEn": "put",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take拿取指令",
+            "code": "take",
+            "name": "拿取容器",
+            "noteCn": "拿取容器",
+            "noteEn": "take",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        }
+    ],
+    "createTime": "2025-05-29 08:55:56",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "ACP",
+    "equipManufacturerName": "安徽磐德信息科技有限公司",
+    "id": 1435269745574912,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "液体进样站",
+    "noteCn": "自动液体处理工作站是一种多功能的液体处理设备。它可以进行精确的移液、分液、混合等操作，并且能够根据不同的实验需求进行灵活编程。其配备的高精度液体处理模块和智能控制系统，确保了液体处理的准确性和重复性。在药物研发、临床检验等领域，可用于高通量的样品处理，如药物筛选实验中的样品稀释、混合等操作，提高实验效率和质量。",
+    "noteEn": "liquid_move_platform_5ml",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": null,
+        "type": null,
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "移液平台2.0-5ml"
+}

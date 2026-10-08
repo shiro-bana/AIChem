@@ -1,0 +1,137 @@
+sample:
+  container:
+    container_name:
+      type: string
+      available_types:
+        - "container_5000ml"
+        - "container_3000ml"
+        - "container_1000ml"
+        - "container_500ml"
+        - "container_500ml_im"
+        - "container_battery"
+        - "bottle_ne"
+        - "bottle_po"
+        - "bottle_chj"
+        - "bottle"
+        - "rack"
+        - "bottle_sample_retention"
+        - "bottle_storage"
+        - "container_50ml"
+        - "container_100ml_water"
+        - "0429_rack"
+        - "container_50ml_water"
+        - "container_leave_liquid"
+        - "container_leave_solid"
+        - "bottle_storage"
+        - "bottle_sample_retention"
+        - "deep_hole_plate"
+        - "50ml_centrifuge_tube"
+        - "15ml_centrifuge_tube"
+        - "reactor"
+        - "battery_raw_material_tray"
+        - "battery_tray"
+        - "battery"
+        - "cabinet"
+        - "test_rack"
+        - "drawer"
+        - "container_kb"
+        - "container_gyb"
+        - "container_btp"
+        - "container_lxgj"
+        - "virtual_battery_tray"
+        - "deal_tube_crucible"
+        - "reaction_tube_crucible"
+        - "ALD_container"
+        - "XRD_container"
+        - "250ml_glass_bottle"
+        - "1ml_tip"
+        - "ir_base_piece"
+        - "xrd_base_piece"
+        - "ir_base_piece_rack"
+        - "lithography_piece"
+        - "96_hole_plate"
+        - "24_hole_plate"
+        - "48_hole_plate"
+        - "chromatography_vial"   # 色谱小瓶
+        - "ptfe_reaction_bottle"  # 聚四氟反应瓶
+        - "vial"  # 西林瓶
+    container_volume:
+      type: number
+    subcontainer:
+      subcontainer_name:
+        type: string
+      subcontainer_number:
+        type: number
+      subcontainer_volume:
+        type: number
+      subcontainer_phase:
+        type: string
+        available_types:
+          - "liquid"
+          - "solid"
+          - "gas"
+          - "slurry"
+          - "suspension"
+          - "solid_with_liquid_overlay" # 固液分层
+          - "solid_with_tiny_liquid"    # 固体带有微量液体
+          - "unknown"
+      covered:
+        type: boolean
+    container_slot_number:
+      type: number
+    slot_occupations:
+      type: array
+      items:
+        occupied:
+          type: boolean
+    covered:
+      type: boolean
+  phase:
+    type: string
+    available_types:
+      - "liquid"
+      - "solid"
+      - "gas"
+      - "slurry"
+      - "suspension"
+      - "unknown"
+  temperature:
+    type: number
+  volume:
+    type: number
+  mass:
+    type: number
+  density:
+    type: number
+  sealed:
+    type: boolean
+  concentration:
+    type: number
+  purity:
+    type: number
+  viscosity:
+    type: number
+  specific_heat:
+    type: number
+  thermal_conductivity:
+    type: number
+  thermal_expansion:
+    type: number
+  surface_tension:
+    type: number
+  electrical_conductivity:
+    type: number
+  magnetic_permeability:
+    type: number
+  crystal_structure:
+    type: string
+  crystal_size:
+    type: string
+  crystal_orientation:
+    type: string
+  crystal_symmetry:
+    type: string
+  crystal_density:
+    type: number
+  crystal_thickness:
+    type: number

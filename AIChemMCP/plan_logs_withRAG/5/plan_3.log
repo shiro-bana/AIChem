@@ -1,0 +1,9 @@
+=== 第 3 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {'description': 'starting_station'}}
+  步骤 2: {'method': '固体进样站', 'params': {'description': 'add_solid_precursors'}}
+  步骤 3: {'method': '1ml液体进样站', 'params': {'description': 'add_water'}}
+  步骤 4: {'method': '磁力搅拌工作站', 'params': {'description': 'stir_and_mix'}}
+  步骤 5: {'method': '离心纯化工作站', 'params': {'description': 'separate_cqd'}}
+  步骤 6: {'method': '烘干机', 'params': {'description': 'dry_cqd_sample'}}
+  步骤 7: {'method': '高通量红外光谱工作站', 'params': {'description': 'ftir_characterization'}}
+  步骤 8: {'method': '高通量XRD工作站', 'params': {'description': 'xrd_characterization'}}

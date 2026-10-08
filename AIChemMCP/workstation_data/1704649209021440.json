@@ -1,0 +1,160 @@
+{
+    "actions": [],
+    "allocates": [
+        {
+            "containerTypeCode": "96_hole_plate",
+            "maxHandleSize": 1
+        }
+    ],
+    "code": "elec_chem_storage_workstation",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": "allocation",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":0,\"maxCount\":10,\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"defaultCount\":0,\"allocateMode\":\"new\"},{\"minCount\":0,\"maxCount\":1,\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\",\"allocateMode\":\"extend\",\"defaultCount\":0}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[{\"workstationCode\":\"starting_station_303_spectroscopy\",\"workstationName\":\"303谱学平台物料站\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take_96孔板拿取",
+            "name": "96孔板拿取",
+            "noteCn": "96孔板拿取",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{\"workstationCode\":\"\",\"workstationName\":\"\"}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put_96孔板放置",
+            "name": "96孔板放置",
+            "noteCn": "96孔板放置",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"96_hole_plate\",\"containerTypeName\":\"96孔板\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"\",\"slotTypeName\":\"\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_2\",\"robotName\":\"航发_电化学\"},{\"robotCode\":\"hf_robot_4\",\"robotName\":\"航发_303\"},{\"robotCode\":\"hf_robot_material\",\"robotName\":\"航发_物料站\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{}"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [],
+                    "containerType": "container",
+                    "typeCode": "96_hole_plate",
+                    "typeId": 1514902940877824,
+                    "typeName": "96孔板"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "96_hole_plate_slot",
+            "typeId": 1514900981777408,
+            "typeName": "96孔板槽位"
+        }
+    ],
+    "createTime": "2025-09-01 12:29:25",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "AFH",
+    "equipManufacturerName": "其他",
+    "id": 1704649209021440,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "置物工作站",
+    "noteCn": "样品静置工作站为样品提供一个稳定、安静的环境，用于样品的静置和平衡。在一些实验中，样品在处理后需要一定的时间进行静置，以达到稳定的状态或使某些反应充分进行。该工作站可以精确控制环境的温度、湿度等条件，确保样品在静置过程中不受外界干扰。例如在一些化学分析实验中，样品在混合或反应后需要静置一段时间以达到均匀的状态，样品静置工作站能够提供适宜的条件，保证实验结果的准确性。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "306酶标-置物工作站"
+}

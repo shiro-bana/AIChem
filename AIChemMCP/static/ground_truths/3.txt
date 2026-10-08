@@ -1,0 +1,3 @@
+物料拿取 starting_station
+液体加样 liquid_dispensing
+容器中转 transfer_workstation

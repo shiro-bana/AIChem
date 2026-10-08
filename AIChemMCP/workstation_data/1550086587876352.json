@@ -1,0 +1,572 @@
+{
+    "actions": [
+        {
+            "code": "dispensing",
+            "id": 1897802271261710,
+            "name": "电池配液",
+            "noteCn": "",
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "BatteryAssembleRecipe",
+                    "bindDataTypeProperty": null,
+                    "childParams": [
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "int",
+                            "defaultValue": "1",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "startNo",
+                            "paramName": "起始电池编号",
+                            "property": "",
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "int",
+                            "defaultValue": "64",
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "endNo",
+                            "paramName": "截止电池编号",
+                            "property": "",
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "recipeCode",
+                            "paramName": "配方编号",
+                            "property": "recipeCode",
+                            "required": 1,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        },
+                        {
+                            "advanced": null,
+                            "bindDataType": null,
+                            "bindDataTypeProperty": null,
+                            "childParams": null,
+                            "constraintType": null,
+                            "constraintValue": "",
+                            "constraintValueEn": "",
+                            "dataType": "string",
+                            "defaultValue": null,
+                            "elementDataType": null,
+                            "flatten": false,
+                            "ioType": "INPUT",
+                            "noteCn": null,
+                            "noteEn": null,
+                            "paramCode": "recipeName",
+                            "paramName": "配方名称",
+                            "property": "recipeName",
+                            "required": 0,
+                            "script": null,
+                            "selection": null,
+                            "selectorType": null,
+                            "timeFlag": null,
+                            "unitTypeCode": null,
+                            "unitTypeName": null,
+                            "value": null
+                        }
+                    ],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "array",
+                    "defaultValue": null,
+                    "elementDataType": "object",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "recipes",
+                    "paramName": "组装配方",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "ENUM",
+                    "constraintValue": "[{\"label\":\"是\",\"value\":\"true\"},{\"label\":\"否\",\"value\":\"false\"}]",
+                    "constraintValueEn": "",
+                    "dataType": "boolean",
+                    "defaultValue": "false",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "",
+                    "noteEn": null,
+                    "paramCode": "isConductionTest",
+                    "paramName": "是否测试电导",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "0",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "aluminiumFlakeCount",
+                    "paramName": "铝片数量",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "file",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "OUTPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "resultCode",
+                    "paramName": "resultCode",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/bms/assembleDevice/aichem/assembleElectrolyte"
+            }
+        },
+        {
+            "code": "assemble",
+            "id": 1897802271261711,
+            "name": "电池组装",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "file",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "OUTPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "resultCode",
+                    "paramName": "resultCode",
+                    "property": null,
+                    "required": 0,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/bms/assembleDevice/aichem/assembleBattery"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "bottle",
+            "maxHandleSize": 16
+        },
+        {
+            "containerTypeCode": "battery",
+            "maxHandleSize": 64
+        }
+    ],
+    "code": "battery_assemble_workstation",
+    "commands": [
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take_battery_with_virtual_tray",
+            "name": "拿取电池携带虚拟托盘",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"battery\",\"containerTypeName\":\"纽扣电池\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"battery_material_transfer_robot\",\"robotName\":\"扣电-电池原料转运机器人\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "big"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{\"workstationCode\":\"battery_assemble_transfer_storage\",\"workstationName\":\"扣电平台中转站\"}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"virtual_battery_tray\",\"containerTypeName\":\"虚拟电池托盘\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "分配容器",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"maxCount\":64,\"containerTypeCode\":\"battery\",\"containerTypeName\":\"纽扣电池\",\"allocateMode\":\"extend\",\"defaultCount\":64},{\"minCount\":\"1\",\"maxCount\":16,\"containerTypeCode\":\"bottle\",\"containerTypeName\":\"西林瓶\",\"allocateMode\":\"extend\",\"defaultCount\":4}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[{\"workstationCode\":\"battery_assemble_workstation_2.0\",\"workstationName\":\"扣电工作站2.0\"},{\"workstationCode\":\"battery_material_storage_station\",\"workstationName\":\"扣电平台物料站\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put_bottle_with_rack",
+            "name": "放置西林瓶带架子",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle\",\"containerTypeName\":\"西林瓶\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"electrolyte_transfer_robot\",\"robotName\":\"扣电-电解液转运机器人\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take_bottle_with_rack",
+            "name": "拿取西林瓶带架子",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"bottle\",\"containerTypeName\":\"西林瓶\",\"slotTypeCode\":\"\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"electrolyte_transfer_robot\",\"robotName\":\"扣电-电解液转运机器人\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "big"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"rack\",\"containerTypeName\":\"样品架\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "electrolyte_common_action",
+            "name": "配液机器人通用指令",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"electrolyte_transfer_robot\",\"robotName\":\"扣电-电解液转运机器人\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "battery_material_action",
+            "name": "电池原料机器人通用指令",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"battery_material_transfer_robot\",\"robotName\":\"扣电-电池原料转运机器人\"}]"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [
+                        {
+                            "allCount": 10,
+                            "children": [
+                                {
+                                    "allCount": 10,
+                                    "children": [],
+                                    "containerType": "container",
+                                    "typeCode": "bottle",
+                                    "typeId": 881618718458880,
+                                    "typeName": "西林瓶"
+                                }
+                            ],
+                            "containerType": "slot",
+                            "typeCode": "bottle_slot",
+                            "typeId": 881569021068288,
+                            "typeName": "西林瓶槽位"
+                        }
+                    ],
+                    "containerType": "container",
+                    "typeCode": "rack",
+                    "typeId": 883795617580032,
+                    "typeName": "样品架"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        },
+        {
+            "allCount": 2,
+            "children": [
+                {
+                    "allCount": 2,
+                    "children": [
+                        {
+                            "allCount": 4,
+                            "children": [
+                                {
+                                    "allCount": 4,
+                                    "children": [
+                                        {
+                                            "allCount": 16,
+                                            "children": [
+                                                {
+                                                    "allCount": 16,
+                                                    "children": [],
+                                                    "containerType": "container",
+                                                    "typeCode": "battery",
+                                                    "typeId": 1549465376097280,
+                                                    "typeName": "纽扣电池"
+                                                }
+                                            ],
+                                            "containerType": "slot",
+                                            "typeCode": "battery_slot",
+                                            "typeId": 1549455103034368,
+                                            "typeName": "电池槽位"
+                                        }
+                                    ],
+                                    "containerType": "container",
+                                    "typeCode": "battery_tray",
+                                    "typeId": 1549464376312832,
+                                    "typeName": "电池托盘"
+                                }
+                            ],
+                            "containerType": "slot",
+                            "typeCode": "battery_tray_slot",
+                            "typeId": 1549454629307392,
+                            "typeName": "电池托盘槽位"
+                        }
+                    ],
+                    "containerType": "container",
+                    "typeCode": "virtual_battery_tray",
+                    "typeId": 1591584396870656,
+                    "typeName": "虚拟电池托盘"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "virtual_battery_tray_slot",
+            "typeId": 1591583331582976,
+            "typeName": "虚拟电池托盘槽位"
+        }
+    ],
+    "createTime": "2025-07-08 22:14:48",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "AAU",
+    "equipManufacturerName": "中科应化（长春）科技有限公司",
+    "id": 1550086587876352,
+    "ignoreMaterial": true,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "扣电工作站",
+    "noteCn": "自动化配液工作站是一种能够自动完成溶液配制任务的设备。它可以根据预设的配方，精确地吸取和混合各种试剂，实现高精度的溶液配制。通过先进的计量系统和自动化控制程序，能够准确控制试剂的体积、浓度和混合比例。可用于各种实验室的化学试剂配制、生物实验的培养基配制等。其自动化操作减少了人工误差，提高了配液的准确性和重复性，同时也提高了工作效率，适用于大规模、高精度的配液需求。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": true,
+        "type": "table",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "2.0"
+}

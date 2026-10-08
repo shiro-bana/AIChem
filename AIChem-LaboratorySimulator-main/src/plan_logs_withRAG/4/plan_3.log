@@ -1,0 +1,7 @@
+=== 第 3 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {'description': '2D material preparation and storage'}}
+  步骤 2: {'method': '多通道固体进样器', 'params': {'description': 'adding nanomaterial into the experimental containers'}}
+  步骤 3: {'method': '1ml液体进样站', 'params': {'description': 'adding organic dye solution to each container'}}
+  步骤 4: {'method': '磁力搅拌工作站', 'params': {'description': 'ensuring homogeneous mixing of nanomaterials and dye'}}
+  步骤 5: {'method': '离心纯化工作站', 'params': {'description': 'separating absorbed dye from solution'}}
+  步骤 6: {'method': '高通量红外光谱工作站', 'params': {'description': 'analyzing absorption efficiency by measuring dye concentration'}}

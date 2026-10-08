@@ -1,0 +1,6 @@
+=== 第 5 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {'description': 'starting_station'}}
+  步骤 2: {'method': '固体进样站', 'params': {'description': 'Add nano material'}}
+  步骤 3: {'method': '1ml液体进样站', 'params': {'description': 'Add dye solution'}}
+  步骤 4: {'method': '磁力搅拌工作站', 'params': {'description': 'Mix nano material and dye'}}
+  步骤 5: {'method': '离心纯化工作站', 'params': {'description': 'Separate adsorbed dye'}}

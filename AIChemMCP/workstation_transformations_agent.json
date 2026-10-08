@@ -1,0 +1,1170 @@
+{
+  "1ml液体进样站": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": {
+        "allowed_types": [
+          "50ml_centrifuge_tube",
+          "ptfe_reaction_bottle",
+          "vial"
+        ],
+        "number_range": [
+          1,
+          10
+        ],
+        "volume_max": 30,
+        "phase": [
+          "liquid",
+          "suspension",
+          "solid"
+        ]
+      }
+    },
+    "phase_transform": {
+      "from": [
+        "liquid",
+        "suspension",
+        "solid"
+      ],
+      "to": [
+        "liquid",
+        "suspension",
+        "solid"
+      ],
+      "conditional": "No phase change occurs; only volume is increased."
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "to": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ]
+    },
+    "volume_transform": {
+      "operation": "add",
+      "range": [
+        1,
+        1
+      ]
+    },
+    "lid_transform": [
+      {
+        "from": true,
+        "to": false
+      },
+      {
+        "from": false,
+        "to": true
+      },
+      {
+        "from": true,
+        "to": true
+      },
+      {
+        "from": false,
+        "to": false
+      }
+    ],
+    "output_state": {
+      "container": "rack",
+      "subcontainer": {
+        "type": [
+          "50ml_centrifuge_tube",
+          "ptfe_reaction_bottle",
+          "vial"
+        ],
+        "volume_max": 30,
+        "phase": [
+          "liquid",
+          "suspension",
+          "solid"
+        ],
+        "covered": [
+          true,
+          false
+        ]
+      }
+    },
+    "constraints_summary": "The container must be a rack with subcontainers of type 50ml centrifuge tube, PTFE reaction bottle, or vial. The number of subcontainers must be between 1 and 10, and the volume must not exceed 30ml. The phase must be liquid, suspension, or solid.",
+    "description": "自动液体处理工作站是一种多功能的液体处理设备。它可以进行精确的移液、分液、混合等操作，并且能够根据不同的实验需求进行灵活编程。其配备的高精度液体处理模块和智能控制系统，确保了液体处理的准确性和重复性。",
+    "source": "ai_agent",
+    "file": "oneml_liquid_sampling_station.py"
+  },
+  "离心纯化工作站": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": {
+        "name": "50ml_centrifuge_tube",
+        "number": {
+          "range": [
+            1,
+            10
+          ],
+          "even": true
+        },
+        "phase": "suspension",
+        "covered": true,
+        "volume": {
+          "max": 30
+        }
+      }
+    },
+    "phase_transform": [
+      {
+        "from": "suspension",
+        "to": "solid_with_liquid_overlay",
+        "conditional": "with wash liquid"
+      },
+      {
+        "from": "suspension",
+        "to": "solid_with_tiny_liquid",
+        "conditional": "without wash liquid"
+      }
+    ],
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "volume_transform": [
+      {
+        "operation": "random",
+        "range": [
+          5,
+          30
+        ],
+        "conditional": "with wash liquid"
+      },
+      {
+        "operation": "random",
+        "range": [
+          2,
+          5
+        ],
+        "conditional": "without wash liquid"
+      }
+    ],
+    "lid_transform": {
+      "from": true,
+      "to": true
+    },
+    "output_state": {
+      "with_wash_liquid": {
+        "phase": "solid_with_liquid_overlay",
+        "volume": "5-30ml",
+        "covered": true
+      },
+      "without_wash_liquid": {
+        "phase": "solid_with_tiny_liquid",
+        "volume": "2-5ml",
+        "covered": true
+      }
+    },
+    "constraints_summary": [
+      "Container must be a rack",
+      "Subcontainer must be a 50ml centrifuge tube",
+      "Number of subcontainers must be an even number between 1 and 10",
+      "Subcontainer phase must be suspension",
+      "Subcontainer must be covered",
+      "Subcontainer volume must not exceed 30ml"
+    ],
+    "description": "离心纯化工作站主要用于对各类混合物进行离心、清洗或纯化处理。它采用机械臂、震荡机及离心机高度耦合的方式，实现从进样、清洗、离心或纯化的完全无人操作。在化学、生物等实验中，目标产物往往需要进行固相和液相",
+    "source": "ai_agent",
+    "file": "centrifugal_purification_workstation.py"
+  },
+  "离心机": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": {
+        "name": "50ml_centrifuge_tube",
+        "number": {
+          "min": 1,
+          "max": 10,
+          "even": true
+        },
+        "phase": "suspension",
+        "covered": true,
+        "volume": {
+          "max": 30
+        }
+      }
+    },
+    "phase_transform": {
+      "from": "suspension",
+      "to": "solid_with_liquid_overlay",
+      "conditional": "固液分离，固体在下层、液体在上层"
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": [
+        0,
+        30
+      ]
+    },
+    "lid_transform": {
+      "from": true,
+      "to": true
+    },
+    "output_state": {
+      "phase": "solid_with_liquid_overlay",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "volume": "unchanged",
+      "lid": "covered"
+    },
+    "constraints_summary": "必须是离心管架进样，离心管架上的容器应为50ml试管，总试管数在1-10之间的双数，容器里必须为悬浊液，容器必须要有盖子，容器内溶液不能超过30ml",
+    "description": "离心处理工作站利用离心力的原理，对样品进行分离和处理。它配备有不同规格的转子，可以适应不同类型和体积的样品容器。通过调节离心速度、时间等参数，能够实现对不同密度、大小的物质的分离。在生物、化学等实验中",
+    "source": "ai_agent",
+    "file": "centrifuge.py"
+  },
+  "烘干机": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": {
+        "allowed_types": [
+          "50ml_centrifuge_tube",
+          "ptfe_reaction_bottle",
+          "vial"
+        ],
+        "number_range": [
+          1,
+          10
+        ],
+        "phase": [
+          "liquid",
+          "suspension",
+          "solid_with_tiny_liquid"
+        ],
+        "max_volume": 30
+      }
+    },
+    "phase_transform": [
+      {
+        "from": "liquid",
+        "to": "liquid",
+        "conditional": "covered is True"
+      },
+      {
+        "from": "suspension",
+        "to": "suspension",
+        "conditional": "covered is True"
+      },
+      {
+        "from": "solid_with_tiny_liquid",
+        "to": "solid_with_tiny_liquid",
+        "conditional": "covered is True"
+      },
+      {
+        "from": "liquid",
+        "to": "solid",
+        "conditional": "covered is False"
+      },
+      {
+        "from": "suspension",
+        "to": "solid",
+        "conditional": "covered is False"
+      },
+      {
+        "from": "solid_with_tiny_liquid",
+        "to": "solid",
+        "conditional": "covered is False"
+      }
+    ],
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "to": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ]
+    },
+    "volume_transform": [
+      {
+        "operation": "reduce",
+        "range": [
+          0.8,
+          1.0
+        ],
+        "conditional": "covered is True"
+      },
+      {
+        "operation": "reduce",
+        "range": [
+          0.3,
+          0.9
+        ],
+        "conditional": "covered is False"
+      }
+    ],
+    "lid_transform": {
+      "from": "any",
+      "to": "any"
+    },
+    "output_state": {
+      "phase": [
+        "liquid",
+        "suspension",
+        "solid"
+      ],
+      "volume": "reduced"
+    },
+    "constraints_summary": "Container must be a rack with subcontainers of type 50ml centrifuge tube, ptfe reaction bottle, or vial. Subcontainer number must be between 1 and 10. Subcontainer phase must be liquid, suspension, or solid_with_tiny_liquid. Volume must not exceed 30ml.",
+    "description": "通过电加热元件产生热量，利用风机使箱内空气循环流动，从而实现对物品的干燥处理。其工作原理是让热空气在箱内不断循环，均匀地传递热量给被干燥的物体，加快水分的蒸发。在大学实验室中，它常用于干燥玻璃仪器、烘",
+    "source": "ai_agent",
+    "file": "drying_station.py"
+  },
+  "双工位电化学工作站": {
+    "input_requirements": {
+      "phase": "suspension",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "subcontainer_number_range": [
+        1,
+        10
+      ],
+      "volume": ">4ml",
+      "lid": "off"
+    },
+    "phase_transform": {
+      "from": "suspension",
+      "to": "suspension",
+      "conditional": "No change, remains a homogeneous suspension"
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": "approximately unchanged"
+    },
+    "lid_transform": {
+      "from": "off",
+      "to": "off"
+    },
+    "output_state": {
+      "phase": "suspension",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "volume": "approximately unchanged",
+      "lid": "off"
+    },
+    "constraints_summary": [
+      "Container must be a rack",
+      "Subcontainer must be a 50ml centrifuge tube",
+      "Subcontainer must be uncovered",
+      "Subcontainer number must be between 1 and 10",
+      "Subcontainer phase must be a homogeneous suspension",
+      "Subcontainer volume must be greater than 4ml"
+    ],
+    "description": "电化学工作站是一种用于电化学实验和分析的设备。它可以提供多种电化学测试技术，如循环伏安法、计时电流法、交流阻抗法等。通过控制电极的电位或电流，测量相应的电化学参数，如电流、电位、电量等。可以用于研究电",
+    "source": "ai_agent",
+    "file": "dual_station_electrochemical_workstation.py"
+  },
+  "荧光光谱工作站": {
+    "input_requirements": {
+      "phase": "liquid",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "subcontainer_number_range": [
+        1,
+        10
+      ],
+      "lid_status": "open",
+      "volume_range": [
+        8,
+        30
+      ]
+    },
+    "phase_transform": {
+      "from": "liquid",
+      "to": "liquid",
+      "conditional": null
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "volume_transform": {
+      "operation": "reduce",
+      "range": [
+        1,
+        3
+      ]
+    },
+    "lid_transform": {
+      "from": "open",
+      "to": "open"
+    },
+    "output_state": {
+      "phase": "liquid",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "volume": "reduced by 1-3 ml",
+      "lid_status": "open"
+    },
+    "constraints_summary": "The sample must be in a rack with 50ml centrifuge tubes, number of tubes between 1 and 10, without lids, containing liquid with volume between 8 and 30 ml.",
+    "description": "分子荧光光谱仪是一种用于分析物质分子结构和性质的仪器。它基于物质分子吸收光能后发射出荧光的原理工作。在大学实验室的化学分析中，可用于检测和定量分析具有荧光特性的化合物，如多环芳烃、某些生物分子等。通过",
+    "source": "ai_agent",
+    "file": "fluorescence_spectroscopy_workstation.py"
+  },
+  "气相色谱仪": {
+    "input_requirements": {
+      "phase": "liquid",
+      "container": "chromatography_vial",
+      "volume": {
+        "min": 0,
+        "max": 5
+      },
+      "lid": "covered",
+      "subcontainer_number": {
+        "min": 1,
+        "max": 25
+      }
+    },
+    "phase_transform": {
+      "from": "liquid",
+      "to": "liquid",
+      "conditional": "No transformation, only analysis"
+    },
+    "container_transform": {
+      "from": "chromatography_vial",
+      "to": "chromatography_vial"
+    },
+    "subcontainer_transform": {
+      "from": "subcontainer",
+      "to": "subcontainer"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": [
+        0,
+        5
+      ]
+    },
+    "lid_transform": {
+      "from": "covered",
+      "to": "covered"
+    },
+    "output_state": "The sample remains as a liquid in the chromatography vial with the same volume and covered lid.",
+    "constraints_summary": "The sample must be a liquid in a chromatography vial with a volume between 0 and 5 ml, covered with a lid, and the subcontainer number must be between 1 and 25.",
+    "description": "气相色谱仪主要用于分离和分析易挥发的有机化合物。它基于不同物质在固定相和流动相之间的分配系数差异，将混合物中的各组分分离出来。在石油化工领域，可用于分析石油产品的组成，确定其中各种烃类的含量；在环境科",
+    "source": "ai_agent",
+    "file": "gas_chromatograph.py"
+  },
+  "高通量红外光谱工作站": {
+    "input_requirements": {
+      "phase": "any",
+      "container": "any",
+      "volume": "any",
+      "lid_state": "any"
+    },
+    "phase_transform": {
+      "from": "any",
+      "to": "any",
+      "conditional": "No phase transformation occurs"
+    },
+    "container_transform": {
+      "from": "any",
+      "to": "any"
+    },
+    "subcontainer_transform": {
+      "from": "any",
+      "to": "any"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": "N/A"
+    },
+    "lid_transform": {
+      "from": "any",
+      "to": "any"
+    },
+    "output_state": {
+      "phase": "same as input",
+      "container": "same as input",
+      "volume": "same as input",
+      "lid_state": "same as input"
+    },
+    "constraints_summary": "No specific constraints on input sample state or transformations. The workstation analyzes the sample without altering its physical state.",
+    "description": "傅里叶变换红外光谱仪通过测量物质对红外光的吸收或发射来获取其分子结构信息。不同的化学键和官能团在红外光谱中有特定的吸收峰。在化学和材料研究中，可用于鉴定有机化合物的结构，判断分子中存在的官能团，如羟基",
+    "source": "ai_agent",
+    "file": "high_throughput_ftir_workstation.py"
+  },
+  "高通量酶标仪工作站": {
+    "input_requirements": {
+      "phase": "liquid",
+      "container": [
+        "24_hole_plate",
+        "48_hole_plate",
+        "96_hole_plate"
+      ],
+      "subcontainer_number": {
+        "24_hole_plate": [
+          1,
+          24
+        ],
+        "48_hole_plate": [
+          1,
+          48
+        ],
+        "96_hole_plate": [
+          1,
+          96
+        ]
+      },
+      "volume": [
+        0,
+        2
+      ],
+      "lid_state": "not specified"
+    },
+    "phase_transform": {
+      "from": "liquid",
+      "to": "liquid",
+      "conditional": "No phase change allowed, must remain liquid"
+    },
+    "container_transform": {
+      "from": [
+        "24_hole_plate",
+        "48_hole_plate",
+        "96_hole_plate"
+      ],
+      "to": [
+        "24_hole_plate",
+        "48_hole_plate",
+        "96_hole_plate"
+      ]
+    },
+    "subcontainer_transform": {
+      "from": "specified by subcontainer_number",
+      "to": "specified by subcontainer_number"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": [
+        0,
+        2
+      ]
+    },
+    "lid_transform": {
+      "from": "not specified",
+      "to": "not specified"
+    },
+    "output_state": {
+      "phase": "liquid",
+      "container": [
+        "24_hole_plate",
+        "48_hole_plate",
+        "96_hole_plate"
+      ],
+      "volume": "unchanged"
+    },
+    "constraints_summary": "Sample must be in a 24, 48, or 96 hole plate with liquid phase and volume between 0 and 2 ml. Subcontainer number must match the plate type.",
+    "description": "SpectraMax iD3 是一款高性能、多功能的酶标仪，由Molecular Devices公司推出，广泛应用于生命科学、药物筛选、临床检测以及分子生物学等领域。它结合了多种先进技术，提供卓越的分",
+    "source": "ai_agent",
+    "file": "high_throughput_microplate_reader_workstation.py"
+  },
+  "高通量XRD工作站": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": {
+        "name": "50ml_centrifuge_tube",
+        "number_range": [
+          1,
+          10
+        ],
+        "covered": false,
+        "phase": "suspension",
+        "volume_range": [
+          5,
+          30
+        ]
+      }
+    },
+    "phase_transform": {
+      "from": "suspension",
+      "to": "suspension",
+      "conditional": "No phase change occurs"
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": [
+        5,
+        30
+      ]
+    },
+    "lid_transform": {
+      "from": false,
+      "to": false
+    },
+    "output_state": {
+      "phase": "suspension",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "volume": "5-30ml",
+      "lid": "no lid"
+    },
+    "constraints_summary": [
+      "Container must be a rack",
+      "Subcontainer must be a 50ml centrifuge tube",
+      "Number of subcontainers must be between 1 and 10",
+      "Subcontainer must not have a lid",
+      "Subcontainer phase must be suspension",
+      "Subcontainer volume must be between 5 and 30ml"
+    ],
+    "description": "X 射线衍射仪主要用于分析材料的晶体结构。它通过发射 X 射线到样品上，然后测量衍射 X 射线的角度和强度。根据布拉格定律，不同的晶体结构会产生特定的衍射图案。在大学的材料科学实验室中，可用于鉴定材料",
+    "source": "ai_agent",
+    "file": "high_throughput_xrd_workstation.py"
+  },
+  "液相色谱仪": {
+    "input_requirements": {
+      "container": "chromatography_vial",
+      "subcontainer_number": {
+        "min": 1,
+        "max": 54
+      },
+      "lid_state": "open",
+      "phase": "liquid",
+      "volume": {
+        "min": 0,
+        "max": 5
+      }
+    },
+    "phase_transform": {
+      "from": "liquid",
+      "to": "liquid",
+      "conditional": "No transformation, only analysis"
+    },
+    "container_transform": {
+      "from": "chromatography_vial",
+      "to": "chromatography_vial"
+    },
+    "subcontainer_transform": {
+      "from": "1-54",
+      "to": "1-54"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": [
+        0,
+        5
+      ]
+    },
+    "lid_transform": {
+      "from": "open",
+      "to": "open"
+    },
+    "output_state": {
+      "phase": "liquid",
+      "container": "chromatography_vial",
+      "subcontainer_number": "1-54",
+      "lid_state": "open",
+      "volume": "0-5"
+    },
+    "constraints_summary": "The sample must be in a chromatography vial with 1-54 subcontainers, no lid, containing a small amount of liquid (0-5 ml). The liquid phase is analyzed without transformation.",
+    "description": "液相色谱仪适用于分离和分析高沸点、热不稳定的化合物。它利用不同物质在固定相和流动相之间的吸附、分配等作用的差异进行分离。在生物制药行业，可用于分离和纯化蛋白质、多肽等生物大分子药物；在药物分析中，可检",
+    "source": "ai_agent",
+    "file": "liquid_chromatograph.py"
+  },
+  "磁力搅拌工作站": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "subcontainer_number_range": [
+        1,
+        10
+      ],
+      "subcontainer_phase": [
+        "liquid",
+        "slurry"
+      ]
+    },
+    "phase_transform": {
+      "from": [
+        "liquid",
+        "slurry"
+      ],
+      "to": [
+        "liquid",
+        "slurry"
+      ],
+      "conditional": "No phase change, only mixing"
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": null
+    },
+    "lid_transform": {
+      "from": "unknown",
+      "to": "unknown"
+    },
+    "output_state": {
+      "temperature": 20,
+      "phase": [
+        "liquid",
+        "slurry"
+      ],
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube"
+    },
+    "constraints_summary": "Container must be a rack with 1-10 50ml centrifuge tubes containing liquid or slurry.",
+    "description": "磁力搅拌工作站通过旋转的磁盘产生的离心力和剪切力，对放置在磁盘上的容器内的液体进行搅拌。它可以实现快速、高效的搅拌效果，使溶液充分混合。该工作站通常具有可调节的搅拌速度和时间设置，能够满足不同实验的需",
+    "source": "ai_agent",
+    "file": "storage_rack.py"
+  },
+  "物料站": {
+    "input_requirements": {
+      "phase": "empty",
+      "container": "rack",
+      "volume": 0,
+      "lid_state": "none"
+    },
+    "phase_transform": {
+      "from": "empty",
+      "to": "empty",
+      "conditional": "N/A"
+    },
+    "container_transform": {
+      "from": "N/A",
+      "to": "rack"
+    },
+    "subcontainer_transform": [
+      {
+        "from": "N/A",
+        "to": "50ml_centrifuge_tube"
+      },
+      {
+        "from": "N/A",
+        "to": "ptfe_reaction_bottle"
+      },
+      {
+        "from": "N/A",
+        "to": "vial"
+      }
+    ],
+    "volume_transform": {
+      "operation": "set",
+      "range": [
+        0,
+        0
+      ]
+    },
+    "lid_transform": {
+      "from": "none",
+      "to": "none"
+    },
+    "output_state": {
+      "container": "rack",
+      "subcontainer": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "volume": 0,
+      "lid_state": "none"
+    },
+    "constraints_summary": "Total number of containers on the rack must be between 1 and 10. Containers are initially empty.",
+    "description": "用于放置所需反应容器的初始区域，机器人从此区域拿取反应容器开始实验。",
+    "source": "ai_agent",
+    "file": "material_station.py"
+  },
+  "多通道固体进样器": {
+    "input_requirements": {
+      "phase": [
+        "solid",
+        "liquid",
+        "suspension"
+      ],
+      "container": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "subcontainer_number": {
+        "min": 1,
+        "max": 20
+      },
+      "lid": "uncovered"
+    },
+    "phase_transform": {
+      "from": [
+        "liquid",
+        "solid",
+        "suspension"
+      ],
+      "to": [
+        "solid",
+        "suspension"
+      ],
+      "conditional": "If phase is liquid, transform to suspension; otherwise, transform to solid."
+    },
+    "container_transform": {
+      "from": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "to": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ]
+    },
+    "subcontainer_transform": {
+      "from": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "to": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ]
+    },
+    "volume_transform": {
+      "operation": "add",
+      "range": [
+        2,
+        10
+      ]
+    },
+    "lid_transform": {
+      "from": "uncovered",
+      "to": "uncovered"
+    },
+    "output_state": {
+      "phase": [
+        "solid",
+        "suspension"
+      ],
+      "volume": "increased by 2-10ml, capped at 50ml"
+    },
+    "constraints_summary": "Container must be one of 50ml centrifuge tube, PTFE reaction bottle, or vial. Subcontainer number must be between 1 and 20. Lid must be uncovered.",
+    "description": "多通道固体自动进样仪主要用于自动、准确地将固体样品送入分析仪器中。它具有多个通道，可以同时处理多个样品，提高了进样的效率。在化学分析中，可用于将固体粉末样品送入光谱仪、质谱仪等进行成分分析；在材料研究",
+    "source": "ai_agent",
+    "file": "multi_channel_solid_sampler.py"
+  },
+  "光催化工作站": {
+    "input_requirements": {
+      "phase": [
+        "liquid",
+        "suspension"
+      ],
+      "container": "vial",
+      "subcontainer_number_range": [
+        1,
+        20
+      ],
+      "volume_max": 15,
+      "lid_state": "not specified"
+    },
+    "phase_transform": {
+      "from": [
+        "liquid",
+        "suspension"
+      ],
+      "to": [
+        "liquid",
+        "suspension"
+      ],
+      "conditional": "No phase change occurs"
+    },
+    "container_transform": {
+      "from": "vial",
+      "to": "vial"
+    },
+    "subcontainer_transform": {
+      "from": "specified",
+      "to": "specified"
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": "no change"
+    },
+    "lid_transform": {
+      "from": "not specified",
+      "to": "not specified"
+    },
+    "output_state": {
+      "phase": [
+        "liquid",
+        "suspension"
+      ],
+      "container": "vial",
+      "volume": "unchanged"
+    },
+    "constraints_summary": [
+      "Container must be a vial",
+      "Total subcontainer number must be between 1 and 20",
+      "Subcontainer phase must be liquid or suspension",
+      "Subcontainer volume must not exceed 15ml"
+    ],
+    "description": "光催化反应仪是用于研究光催化反应的设备。它提供特定波长和强度的光源，激发光催化剂产生光生电子和空穴，从而催化一系列化学反应。可以通过填充不同气氛，用于降解有机污染物、水分解制氢、二氧化碳还原、光催化产",
+    "source": "ai_agent",
+    "file": "photocatalytic_workstation.py"
+  },
+  "固体进样站": {
+    "input_requirements": {
+      "phase": [
+        "empty",
+        "solid"
+      ],
+      "container": "50ml_centrifuge_tube",
+      "volume": "less than 50ml",
+      "lid": "no lid"
+    },
+    "phase_transform": {
+      "from": [
+        "empty",
+        "solid"
+      ],
+      "to": "solid",
+      "conditional": null
+    },
+    "container_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "subcontainer_transform": null,
+    "volume_transform": {
+      "operation": "add",
+      "range": [
+        1,
+        5
+      ]
+    },
+    "lid_transform": {
+      "from": "no lid",
+      "to": "no lid"
+    },
+    "output_state": {
+      "phase": "solid",
+      "container": "50ml_centrifuge_tube",
+      "volume": "increased by 1 to 5ml, up to a maximum of 50ml",
+      "lid": "no lid"
+    },
+    "constraints_summary": [
+      "Container must be a 50ml centrifuge tube",
+      "Centrifuge tube must have no lid",
+      "Initial state must be empty or solid",
+      "Volume must not exceed 50ml"
+    ],
+    "description": "固体自动进样工作站用于自动向容器中加入固体样品。它能够准确地称量和加入一定量的固体样品，避免了人工操作可能带来的误差和污染。该工作站通常配备有高精度的称量装置和加样系统，可以按照预设的程序将固体样品准",
+    "source": "ai_agent",
+    "file": "solid_injection.py"
+  },
+  "置物工作站": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "subcontainer_number_range": [
+        1,
+        10
+      ]
+    },
+    "phase_transform": {
+      "from": null,
+      "to": null,
+      "conditional": "No phase transformation occurs; the sample is only stored."
+    },
+    "container_transform": {
+      "from": null,
+      "to": null
+    },
+    "subcontainer_transform": {
+      "from": null,
+      "to": null
+    },
+    "volume_transform": {
+      "operation": null,
+      "range": null
+    },
+    "lid_transform": {
+      "from": null,
+      "to": null
+    },
+    "output_state": "The sample remains unchanged; it is stored under controlled conditions.",
+    "constraints_summary": "The sample must be in a rack with subcontainers that are either 50ml centrifuge tubes, PTFE reaction bottles, or vials. The number of subcontainers must be between 1 and 10.",
+    "description": "置物工作站为样品提供一个稳定、安静的环境，用于样品的静置和平衡。在一些实验中，样品在处理后需要一定的时间进行静置，以达到稳定的状态或使某些反应充分进行。该工作站可以精确控制环境的温度、湿度等条件，确保",
+    "source": "ai_agent",
+    "file": "storage_workstation.py"
+  },
+  "超声清洗工作站": {
+    "input_requirements": {
+      "container": "rack",
+      "subcontainer": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "subcontainer_number": [
+        1,
+        10
+      ],
+      "subcontainer_phase": [
+        "liquid",
+        "suspension"
+      ],
+      "subcontainer_volume": [
+        0.01,
+        30
+      ]
+    },
+    "phase_transform": {
+      "from": [
+        "liquid",
+        "suspension"
+      ],
+      "to": [
+        "liquid",
+        "suspension"
+      ],
+      "conditional": "No change in phase, only mixing occurs"
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ],
+      "to": [
+        "50ml_centrifuge_tube",
+        "ptfe_reaction_bottle",
+        "vial"
+      ]
+    },
+    "volume_transform": {
+      "operation": "none",
+      "range": "No change in volume"
+    },
+    "lid_transform": {
+      "from": "unknown",
+      "to": "unknown"
+    },
+    "output_state": "Homogeneously mixed suspension or liquid with unchanged volume",
+    "constraints_summary": "Container must be a rack with 1-10 subcontainers of type 50ml centrifuge tube, PTFE reaction bottle, or vial. Subcontainer phase must be liquid or suspension with volume between 0.01ml and 30ml.",
+    "description": "该工作站用于对样品进行超声处理，通过高频声波在液体中产生空化效应，实现物质的分散、混合、促进反应或清洗等功能。",
+    "source": "ai_agent",
+    "file": "ultrasonic_cleaning_workstation.py"
+  },
+  "紫外光谱工作站": {
+    "input_requirements": {
+      "phase": "liquid",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "subcontainer_number_range": [
+        1,
+        10
+      ],
+      "volume_range": [
+        8,
+        30
+      ],
+      "lid_status": "open"
+    },
+    "phase_transform": {
+      "from": "liquid",
+      "to": "liquid",
+      "conditional": null
+    },
+    "container_transform": {
+      "from": "rack",
+      "to": "rack"
+    },
+    "subcontainer_transform": {
+      "from": "50ml_centrifuge_tube",
+      "to": "50ml_centrifuge_tube"
+    },
+    "volume_transform": {
+      "operation": "reduce",
+      "range": [
+        1,
+        3
+      ]
+    },
+    "lid_transform": {
+      "from": "open",
+      "to": "open"
+    },
+    "output_state": {
+      "phase": "liquid",
+      "container": "rack",
+      "subcontainer": "50ml_centrifuge_tube",
+      "volume": "reduced by 1-3 ml",
+      "lid_status": "open"
+    },
+    "constraints_summary": [
+      "Container must be a rack",
+      "Subcontainer must be a 50ml centrifuge tube",
+      "Subcontainer number must be between 1 and 10",
+      "Subcontainer must be uncovered",
+      "Subcontainer phase must be liquid",
+      "Subcontainer volume must be between 8 and 30 ml"
+    ],
+    "description": "紫外 - 可见分光光度计利用物质对紫外和可见光的吸收特性来进行分析。不同的物质对不同波长的光有特定的吸收峰，通过测量样品在不同波长下的吸光度，可以对物质进行定性和定量分析。在化学实验中，可用于测定溶液",
+    "source": "ai_agent",
+    "file": "uv_spectroscopy_workstation.py"
+  }
+}

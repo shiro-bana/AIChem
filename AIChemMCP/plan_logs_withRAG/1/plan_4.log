@@ -1,0 +1,8 @@
+=== 第 4 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {'description': 'starting_station'}}
+  步骤 2: {'method': '1ml液体进样站', 'params': {'description': 'add_precursor_chemicals'}}
+  步骤 3: {'method': '磁力搅拌工作站', 'params': {'description': 'ensure_solution_homogeneity'}}
+  步骤 4: {'method': '超声清洗工作站', 'params': {'description': 'initiate_nano_reaction'}}
+  步骤 5: {'method': '烘干机', 'params': {'description': 'convert_to_solid'}}
+  步骤 6: {'method': '固体进样站', 'params': {'description': 'prepare_for_spectral_analysis'}}
+  步骤 7: {'method': '高通量红外光谱工作站', 'params': {'description': 'spectral_analysis'}}

@@ -1,0 +1,619 @@
+{
+    "actions": [
+        {
+            "code": "start_check",
+            "id": 1897802270901251,
+            "name": "开始检测",
+            "noteCn": "开始检测",
+            "noteEn": "start check",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "start_check",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "开始检测",
+                    "noteEn": "start",
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "resultCode",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "OUTPUT",
+                    "noteCn": "",
+                    "noteEn": null,
+                    "paramCode": "resultCode",
+                    "paramName": "resultCode",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "prefix_operate",
+            "id": 1897802270901252,
+            "name": "检测前处理",
+            "noteCn": "检测前处理",
+            "noteEn": "prefix operate",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "prefix_operate",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "前置检测",
+                    "noteEn": "prefix operate",
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": null,
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "drip_volume",
+                    "paramName": "滴液体积",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "collect_sample_back",
+            "id": 1897802270901253,
+            "name": "采集样本背景",
+            "noteCn": "采集样本背景",
+            "noteEn": "collect sample background",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "setup",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "开始检测",
+                    "noteEn": "start",
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "sleep",
+            "id": 1897802270901254,
+            "name": "静置晾干",
+            "noteCn": "静置晾干",
+            "noteEn": "sleep",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "sleep",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "静置",
+                    "noteEn": "sleep",
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "1200",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "静置晾干时间（s）",
+                    "noteEn": "sleep time(s)",
+                    "paramCode": "time",
+                    "paramName": "静置晾干时间（s）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "confirm_tip_position",
+            "id": 1897802270901255,
+            "name": "确认tip头位置",
+            "noteCn": "确认tip头位置",
+            "noteEn": "confirm tip position",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "confirm_tip_position",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "确认tip头位置",
+                    "noteEn": "sleep",
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": "RANGE",
+                    "constraintValue": "[1,96]",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "1",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "INPUT",
+                    "noteCn": "当前可用tip头起始位置（1-96）",
+                    "noteEn": "current used tip position",
+                    "paramCode": "position",
+                    "paramName": "当前可用tip头起始位置（1-96）",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                },
+                {
+                    "advanced": null,
+                    "bindDataType": "",
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "int",
+                    "defaultValue": "1",
+                    "elementDataType": "",
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "type",
+                    "paramName": "确认类型",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        },
+        {
+            "code": "online",
+            "id": 1897802270901256,
+            "name": "强制上线",
+            "noteCn": "强制上线",
+            "noteEn": "online",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "online",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": null,
+                    "noteEn": null,
+                    "paramCode": "operation",
+                    "paramName": "",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/online"
+            }
+        },
+        {
+            "code": "auto_confirm_tip_position",
+            "id": 1897802270901257,
+            "name": "自动确认tip头位置",
+            "noteCn": "自动确认tip头位置",
+            "noteEn": "auto confirm tip position",
+            "params": [
+                {
+                    "advanced": null,
+                    "bindDataType": null,
+                    "bindDataTypeProperty": null,
+                    "childParams": [],
+                    "constraintType": null,
+                    "constraintValue": "",
+                    "constraintValueEn": "",
+                    "dataType": "string",
+                    "defaultValue": "confirm_tip_position",
+                    "elementDataType": null,
+                    "flatten": false,
+                    "ioType": "CONSTANT",
+                    "noteCn": "自动确认tip头位置",
+                    "noteEn": "sleep",
+                    "paramCode": "operation",
+                    "paramName": "操作指令",
+                    "property": null,
+                    "required": 1,
+                    "script": null,
+                    "selection": null,
+                    "selectorType": null,
+                    "timeFlag": null,
+                    "unitTypeCode": null,
+                    "unitTypeName": null,
+                    "value": null
+                }
+            ],
+            "recommend": null,
+            "translator": "default",
+            "translatorArgs": {
+                "method": "POST",
+                "url": "/command"
+            }
+        }
+    ],
+    "allocates": [
+        {
+            "containerTypeCode": "ir_base_piece",
+            "maxHandleSize": 10
+        },
+        {
+            "containerTypeCode": "bottle_storage",
+            "maxHandleSize": 10
+        }
+    ],
+    "code": "high_flux_ir_workstation",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": "allocation",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"maxCount\":10,\"containerTypeCode\":\"ir_base_piece\",\"containerTypeName\":\"红外基底片\",\"allocateMode\":\"extend\",\"defaultCount\":1},{\"minCount\":0,\"maxCount\":10,\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"allocateMode\":\"extend\",\"defaultCount\":10}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "take",
+            "actionName": "take指令",
+            "code": "take",
+            "name": "拿取容器",
+            "noteCn": "拿取容器",
+            "noteEn": "take",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"ir_base_piece\",\"containerTypeName\":\"红外基底片\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{\"workstationCode\":\"starting_station_303_spectroscopy_ir\",\"workstationName\":\"303谱学平台-红外物料站\"}"
+                },
+                {
+                    "paramCode": "userDefinedPos",
+                    "value": ""
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"ir_base_piece_rack\",\"containerTypeName\":\"红外基底托盘\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "put",
+            "actionName": "put指令",
+            "code": "put",
+            "name": "放置容器",
+            "noteCn": "放置容器",
+            "noteEn": "put",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "{\"containerTypeCode\":\"ir_base_piece\",\"containerTypeName\":\"红外基底片\"}"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "withParentContainerType",
+                    "value": "{\"containerTypeCode\":\"ir_base_piece_rack\",\"containerTypeName\":\"红外基底托盘\"}"
+                }
+            ]
+        },
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "common",
+            "name": "通用指令",
+            "noteCn": "common",
+            "noteEn": "通用指令",
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "lock",
+            "actionName": "lock加锁指令",
+            "code": "lock",
+            "name": "独占机械臂",
+            "noteCn": "独占机械臂",
+            "noteEn": "lock arm",
+            "params": [
+                {
+                    "paramCode": "robotList",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                }
+            ]
+        },
+        {
+            "actionCode": "unlock",
+            "actionName": "unlock解锁指令",
+            "code": "unlock",
+            "name": "释放机械臂",
+            "noteCn": "释放机械臂",
+            "noteEn": "unlock arm",
+            "params": [
+                {
+                    "paramCode": "robotList",
+                    "value": "[{\"robotCode\":\"ur_303_spectroscopy_robot\",\"robotName\":\"优傲_303谱学平台机械臂\"}]"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [],
+            "containerType": "slot",
+            "typeCode": "ir_base_piece_rack_slot",
+            "typeId": 1656289536836608,
+            "typeName": "红外基底托盘槽位"
+        }
+    ],
+    "createTime": "2025-08-15 10:29:02",
+    "defaultVersion": true,
+    "definer": 0,
+    "equipManufacturerCode": "AFF",
+    "equipManufacturerName": "SHIMADZU岛津",
+    "id": 1656282895188992,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "高通量平台-红外光谱工作站",
+    "noteCn": "傅里叶变换红外光谱仪通过测量物质对红外光的吸收或发射来获取其分子结构信息。不同的化学键和官能团在红外光谱中有特定的吸收峰。在化学和材料研究中，可用于鉴定有机化合物的结构，判断分子中存在的官能团，如羟基、羰基等。在高分子材料研究中，能分析聚合物的组成和结构，为材料的合成和改性提供依据，帮助研究人员深入了解材料的性质和性能。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "303-谱学平台"
+}

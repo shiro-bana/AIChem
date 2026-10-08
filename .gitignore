@@ -1,0 +1,14 @@
+﻿.local-backups/
+.vscode/
+.idea/
+.claude/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+.env.*
+**/static/OPENAI_API_KEY
+**/static/QWEN_API_KEY
+**/all-MiniLM-L6-v2/

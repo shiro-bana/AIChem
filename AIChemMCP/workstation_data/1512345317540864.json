@@ -1,0 +1,207 @@
+{
+    "actions": [],
+    "allocates": [
+        {
+            "containerTypeCode": "bottle_storage",
+            "maxHandleSize": 20
+        },
+        {
+            "containerTypeCode": "bottle_sample_retention",
+            "maxHandleSize": 5
+        }
+    ],
+    "code": "starting_station",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "allocate分配容器指令",
+            "code": "allocation",
+            "name": "容器分配",
+            "noteCn": "容器分配",
+            "noteEn": "allocation",
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"allocateMode\":\"new\",\"maxCount\":20,\"defaultCount\":1},{\"minCount\":1,\"maxCount\":5,\"containerTypeCode\":\"bottle_sample_retention\",\"containerTypeName\":\"留样瓶\",\"allocateMode\":\"extend\",\"defaultCount\":5}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put_all",
+            "actionName": "put_all指令",
+            "code": "put_all",
+            "name": "放置容器",
+            "noteCn": "放置容器",
+            "noteEn": "put_all",
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"slotTypeCode\":\"slot_bottle_storage\"}]"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_material\",\"robotName\":\"航发_物料站\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                }
+            ]
+        },
+        {
+            "actionCode": "take_all",
+            "actionName": "take_all指令",
+            "code": "take-input",
+            "name": "拿取进样瓶",
+            "noteCn": "拿取进样瓶",
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"bottle_storage\",\"containerTypeName\":\"进样瓶\",\"slotTypeCode\":\"slot_bottle_storage\"}]"
+                },
+                {
+                    "paramCode": "slotType",
+                    "value": "{\"slotTypeCode\":\"slot_bottle_storage\",\"slotTypeName\":\"进样瓶槽位\"}"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"hf_robot_material\",\"robotName\":\"航发_物料站\"}]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "storageWorkstation",
+                    "value": "{}"
+                }
+            ]
+        },
+        {
+            "actionCode": "common",
+            "actionName": "通用指令",
+            "code": "common",
+            "name": "通用指令",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[{\"robotCode\":\"schedule_robot_1\",\"robotName\":\"调度机器人\"}]"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [
+                        {
+                            "allCount": 1,
+                            "children": [
+                                {
+                                    "allCount": 1,
+                                    "children": [],
+                                    "containerType": "container",
+                                    "typeCode": "bottle_storage",
+                                    "typeId": 1390281083257856,
+                                    "typeName": "进样瓶"
+                                }
+                            ],
+                            "containerType": "slot",
+                            "typeCode": "slot_bottle_storage",
+                            "typeId": 1390279958430720,
+                            "typeName": "进样瓶槽位"
+                        }
+                    ],
+                    "containerType": "container",
+                    "typeCode": "rack",
+                    "typeId": 883795617580032,
+                    "typeName": "样品架"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        },
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [
+                        {
+                            "allCount": 5,
+                            "children": [
+                                {
+                                    "allCount": 5,
+                                    "children": [],
+                                    "containerType": "container",
+                                    "typeCode": "bottle_sample_retention",
+                                    "typeId": 1390281699001344,
+                                    "typeName": "留样瓶"
+                                }
+                            ],
+                            "containerType": "slot",
+                            "typeCode": "slot_bottle_sample_retention",
+                            "typeId": 1390279627342848,
+                            "typeName": "留样瓶槽位"
+                        }
+                    ],
+                    "containerType": "container",
+                    "typeCode": "rack",
+                    "typeId": 883795617580032,
+                    "typeName": "样品架"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "rack_slot",
+            "typeId": 881570976007168,
+            "typeName": "样品架槽位"
+        }
+    ],
+    "createTime": "2025-06-25 14:18:36",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "ACW",
+    "equipManufacturerName": "合肥市蜀山区亚源精密仪器经营部",
+    "id": 1512345317540864,
+    "ignoreMaterial": true,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "物料站",
+    "noteCn": "实验室试剂储存柜主要用于安全、规范地储存各种化学试剂。它通常具有良好的通风、防火、防爆等功能，以确保试剂的储存安全。根据试剂的性质，如易燃、易爆、有毒、腐蚀性等，储存柜会进行分类存储，避免不同性质的试剂相互反应。同时，储存柜还配备有合理的标识和管理系统，方便试剂的查找和取用，有助于提高实验室的管理水平和安全性，保障实验工作的顺利进行。",
+    "noteEn": "starting_station",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": null,
+        "type": null,
+        "url": null
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "源物料站"
+}

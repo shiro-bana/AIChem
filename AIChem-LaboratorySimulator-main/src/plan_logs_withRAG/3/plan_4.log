@@ -1,0 +1,9 @@
+=== 第 4 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '1ml液体进样站', 'params': {}}
+  步骤 3: {'method': '磁力搅拌工作站', 'params': {}}
+  步骤 4: {'method': '超声清洗工作站', 'params': {}}
+  步骤 5: {'method': '离心纯化工作站', 'params': {}}
+  步骤 6: {'method': '高通量酶标仪工作站', 'params': {}}
+  步骤 7: {'method': '离心管架分液站', 'params': {}}
+  步骤 8: {'method': '烘干机', 'params': {}}

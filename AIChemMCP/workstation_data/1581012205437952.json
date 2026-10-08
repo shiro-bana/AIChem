@@ -1,0 +1,149 @@
+{
+    "actions": [],
+    "allocates": [],
+    "code": "starting_station",
+    "commands": [
+        {
+            "actionCode": "allocate_container",
+            "actionName": "分配容器指令",
+            "code": "allocation",
+            "name": "分配容器",
+            "noteCn": null,
+            "noteEn": null,
+            "params": [
+                {
+                    "paramCode": "containerType",
+                    "value": "[{\"minCount\":\"1\",\"maxCount\":3,\"containerTypeCode\":\"container_btp\",\"containerTypeName\":\"电化学分析玻碳片\",\"allocateMode\":\"extend\",\"defaultCount\":3},{\"minCount\":\"1\",\"maxCount\":1,\"containerTypeCode\":\"container_lxgj\",\"containerTypeName\":\"电化学分析离心管架\",\"allocateMode\":\"extend\",\"defaultCount\":1},{\"minCount\":\"1\",\"maxCount\":1,\"containerTypeCode\":\"container_kb\",\"containerTypeName\":\"电化学分析孔板\",\"allocateMode\":\"extend\",\"defaultCount\":1}]"
+                },
+                {
+                    "paramCode": "allocateOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "allocateWorkstations",
+                    "value": "[]"
+                }
+            ]
+        },
+        {
+            "actionCode": "put_all",
+            "actionName": "put_all指令",
+            "code": "put_all",
+            "name": "拿取物料",
+            "noteCn": null,
+            "noteEn": "",
+            "params": [
+                {
+                    "paramCode": "containerTypeList",
+                    "value": "[{\"containerTypeCode\":\"container_btp\",\"containerTypeName\":\"电化学分析玻碳片\",\"slotTypeCode\":\"\",\"withParentContainerTypeCode\":\"slot_gyb\"},{\"containerTypeCode\":\"container_kb\",\"containerTypeName\":\"电化学分析孔板\"},{\"containerTypeCode\":\"container_lxgj\",\"containerTypeName\":\"电化学分析离心管架\"}]"
+                },
+                {
+                    "paramCode": "robotCodes",
+                    "value": "[]"
+                },
+                {
+                    "paramCode": "fromOrder",
+                    "value": "small"
+                },
+                {
+                    "paramCode": "toOrder",
+                    "value": "small"
+                }
+            ]
+        }
+    ],
+    "containerSettings": [
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [],
+                    "containerType": "container",
+                    "typeCode": "container_lxgj",
+                    "typeId": 1577651836519424,
+                    "typeName": "电化学分析离心管架"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "slot_lxgj",
+            "typeId": 1577646177780736,
+            "typeName": "电化学分析离心管架槽位"
+        },
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [],
+                    "containerType": "container",
+                    "typeCode": "container_kb",
+                    "typeId": 1577649912742912,
+                    "typeName": "电化学分析孔板"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "slot_kb",
+            "typeId": 1577644841960448,
+            "typeName": "电化学分析孔板槽位"
+        },
+        {
+            "allCount": 1,
+            "children": [
+                {
+                    "allCount": 1,
+                    "children": [
+                        {
+                            "allCount": 3,
+                            "children": [
+                                {
+                                    "allCount": 3,
+                                    "children": [],
+                                    "containerType": "container",
+                                    "typeCode": "container_btp",
+                                    "typeId": 1577651173360640,
+                                    "typeName": "电化学分析玻碳片"
+                                }
+                            ],
+                            "containerType": "slot",
+                            "typeCode": "slot_btp",
+                            "typeId": 1577647377384448,
+                            "typeName": "电化学分析玻碳片槽位"
+                        }
+                    ],
+                    "containerType": "container",
+                    "typeCode": "container_gyb",
+                    "typeId": 1577650555814912,
+                    "typeName": "电化学分析刚玉板"
+                }
+            ],
+            "containerType": "slot",
+            "typeCode": "slot_gyb",
+            "typeId": 1577648058500096,
+            "typeName": "电化学分析刚玉板槽位"
+        }
+    ],
+    "createTime": "2025-07-19 20:24:23",
+    "defaultVersion": false,
+    "definer": 0,
+    "equipManufacturerCode": "ACW",
+    "equipManufacturerName": "合肥市蜀山区亚源精密仪器经营部",
+    "id": 1581012205437952,
+    "ignoreMaterial": false,
+    "modelCode": null,
+    "modelImages": null,
+    "modelName": null,
+    "name": "物料站",
+    "noteCn": "实验室试剂储存柜主要用于安全、规范地储存各种化学试剂。它通常具有良好的通风、防火、防爆等功能，以确保试剂的储存安全。根据试剂的性质，如易燃、易爆、有毒、腐蚀性等，储存柜会进行分类存储，避免不同性质的试剂相互反应。同时，储存柜还配备有合理的标识和管理系统，方便试剂的查找和取用，有助于提高实验室的管理水平和安全性，保障实验工作的顺利进行。",
+    "noteEn": "",
+    "paramUrl": "",
+    "resultSetting": {
+        "preview": false,
+        "type": "",
+        "url": ""
+    },
+    "updateTime": "2025-11-07 19:42:38",
+    "updatedActions": null,
+    "variables": [],
+    "version": "电化学分析"
+}

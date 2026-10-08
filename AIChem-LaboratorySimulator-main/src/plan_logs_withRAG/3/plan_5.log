@@ -1,0 +1,4 @@
+=== 第 5 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {'description': '取用罗丹明B标准品溶液'}}
+  步骤 2: {'method': '1ml液体进样站', 'params': {'description': '将罗丹明B溶液加入比色皿'}}
+  步骤 3: {'method': '高通量酶标仪工作站', 'params': {'description': '测量罗丹明B的吸光度'}}

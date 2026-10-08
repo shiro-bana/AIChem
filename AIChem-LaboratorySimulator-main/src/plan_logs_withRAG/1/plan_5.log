@@ -1,0 +1,8 @@
+=== 第 5 次执行计划 ===
+  步骤 1: {'method': '置物工作站', 'params': {}}
+  步骤 2: {'method': '液相色谱仪', 'params': {}}
+  步骤 3: {'method': '1ml液体进样站', 'params': {}}
+  步骤 4: {'method': '磁力搅拌工作站', 'params': {}}
+  步骤 5: {'method': '超声清洗工作站', 'params': {}}
+  步骤 6: {'method': '烘干机', 'params': {}}
+  步骤 7: {'method': 'infrared_spectroscopy_workstation', 'params': {}}
